@@ -2,7 +2,7 @@ const address = new URL(location.href);
 // const siteName = (document.querySelector('meta[property="og:site_name"]') as HTMLMetaElement)?.content;
 
 export const instanceHost = 'kr.akirin.xyz';
-const siteName = 'Orange Kr';
+const siteName = 'Ayuskey';
 
 export const host = address.host;
 export const hostname = address.hostname;
