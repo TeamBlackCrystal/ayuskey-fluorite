@@ -11,13 +11,17 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@nuxtjs/pwa": "^3.3.5",
-    "apexcharts": "^3.28.3",
-    "core-js": "^3.15.1",
-    "misskey-js": "^0.0.6",
-    "nuxt": "^2.15.7",
-    "vue-apexcharts": "^1.6.2",
-    "vuetify": "^2.5.5"
+    "@nuxtjs/composition-api": "0.29.2",
+    "@nuxtjs/i18n": "7.0.3",
+    "@nuxtjs/pwa": "3.3.5",
+    "@nuxtjs/style-resources": "^1.2.1",
+    "apexcharts": "3.28.3",
+    "core-js": "3.15.1",
+    "mfm-js": "^0.19.0",
+    "misskey-js": "0.0.6",
+    "nuxt": "2.15.7",
+    "vue-apexcharts": "1.6.2",
+    "vuetify": "2.5.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
