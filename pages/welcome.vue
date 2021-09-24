@@ -35,13 +35,13 @@
         </v-card>
         <v-row class='mb-5'>
           <v-col cols='12' sm='6'>
-            <v-card class='rounded-lg' min-height='20em'>
+            <v-card class='rounded-lg' min-height='27.5em'>
               <v-app-bar class='rounded-0 rounded-t-lg'>お知らせ</v-app-bar>
               Second Card
             </v-card>
           </v-col>
           <v-col>
-            <v-card class='rounded-lg' min-height='20em'>
+            <v-card class='rounded-lg' min-height='27.5em'>
               <v-app-bar class='rounded-0 rounded-t-lg'>最近の画像</v-app-bar>
               Second Card
             </v-card>
@@ -49,9 +49,6 @@
         </v-row>
         <v-card class='rounded-lg pa-5 mb-10' min-height='15em'>
           文字
-        </v-card>
-        <v-card class='rounded-lg pa-5 mb-10' height='5em'>
-          <a style='font-size: 12px'>Misskeyについて・このインスタンスについて・リポジトリ・フィードバック</a>
         </v-card>
       </v-col>
       <v-col xs='12'>
