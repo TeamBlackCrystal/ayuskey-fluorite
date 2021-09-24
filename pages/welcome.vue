@@ -3,9 +3,9 @@
     <v-row>
       <v-col xs='12' sm='8'>
         <v-card class='rounded-xl pa-5 mb-10' min-height='20em'>
-          <h1>Akari Ne</h1>
+          <h1>{{ instanceName }}</h1>
           <v-row class='pa-3'>
-            <p class='pr-7'>ne.akarinext.org - Powered by Ayuskey.</p>
+            <p class='pr-7'>{{ host }} - Powered by Ayuskey.</p>
             <div class='pr-5'>
               <v-icon small>fas fa-user</v-icon>
               90
@@ -74,13 +74,22 @@
 <script lang='ts'>
 import { defineComponent } from '@nuxtjs/composition-api'
 import { toUnicode } from 'punycode/';
+import { host, instanceName } from '~/utils/config';
+import * as os from '~/utils/os';
 
 export default defineComponent({
   name: 'Welcome',
   data() {
     return {
-
+      host: toUnicode(host),
+      instanceName,
+      stats: null,
     }
+  },
+  created() {
+    os.api('stats').then(stats => {
+      this.stats = stats;
+    })
   }
 })
 </script>
