@@ -75,3 +75,12 @@
     </v-col>
   </v-row>
 </template>
+
+<script lang="ts">
+export default {
+  // layoutプロパティを追記
+  layout ({ store }) {
+    return store.state.loggedIn ? 'default' : 'welcome'
+  }
+}
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-app dark>
     <div :style='customBanner'
          style='position:absolute; width: 100%; min-height: 40%; background-size: 100% auto; background-repeat: no-repeat;'></div>
 
@@ -98,7 +98,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </v-app>
 </template>
 <script lang='ts'>
 import { defineComponent } from '@nuxtjs/composition-api'
