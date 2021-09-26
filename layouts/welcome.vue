@@ -30,14 +30,14 @@
                 outlined
                 color='white'
               >
-                新規登録
+                {{ $t('signup') }}
               </v-btn>
               <v-btn
                 outlined
                 color='white'
                 v-on:click='login'
               >
-                 {{$t('login')}}
+                {{ $t('login') }}
               </v-btn>
             </div>
           </v-card>
@@ -46,7 +46,7 @@
               <v-card class='rounded-lg' min-height='27.5em'>
                 <v-app-bar class='rounded-0 rounded-t-lg elevation-0'>
                   <v-icon small class='pr-2'>fas fa-broadcast-tower</v-icon>
-                  お知らせ
+                  {{ $t('Notification') }}
                 </v-app-bar>
                 <div v-for='announcement in announcements' :key='announcement.id'>
                   <v-card>
@@ -92,7 +92,7 @@
           <v-card class='rounded-lg' min-height='10em'>
             <v-app-bar class='rounded-0 rounded-t-lg elevation-0'>
               <v-icon small class='pr-2'>fas fa-info-circle</v-icon>
-              情報
+              {{$t('information')}}
             </v-app-bar>
             <p class='pa-5'>Version: {{ meta.version }}<br><span>Maintainer: {{ meta.maintainerName }}</span></p>
           </v-card>
