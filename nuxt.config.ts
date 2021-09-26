@@ -22,8 +22,7 @@ const nuxtConfig: NuxtConfig = {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -48,7 +47,23 @@ const nuxtConfig: NuxtConfig = {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/i18n',
+    [
+      '@nuxtjs/i18n',
+      {
+        locales: [
+          { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },
+          { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' }
+        ],
+        defaultLocale: 'ja',
+        langDir: 'locales/',
+        strategy: 'prefix_and_default',
+        vueI18n: {
+          fallbackLocale: 'ja'
+        },
+        vueI18nLoader: true,
+        lazy: true
+      }
+    ]
   ],
   i18n: {},
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -78,12 +93,11 @@ const nuxtConfig: NuxtConfig = {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
 
   styleResources: {
     stylus: []
   }
 }
 
-export default nuxtConfig;
+export default nuxtConfig
