@@ -35,8 +35,9 @@
               <v-btn
                 outlined
                 color='white'
+                v-on:click='login'
               >
-                ログイン
+                 {{$t('login')}}
               </v-btn>
             </div>
           </v-card>
@@ -128,6 +129,53 @@ export default defineComponent({
       return {
         'background': 'url(' + this.meta.bannerUrl + ')'
       }
+    }
+  },
+  methods: {
+    login() {
+      os.api('app/create', {
+        name: 'Ayuskey Front',
+        description: 'Ayuskeyのフロントwww',
+        permission: [
+          'read:account',
+          'write:account',
+          'read:blocks',
+          'write:blocks',
+          'read:drive',
+          'write:drive',
+          'read:favorites',
+          'write:favorites',
+          'read:following',
+          'write:following',
+          'read:messaging',
+          'write:messaging',
+          'read:mutes',
+          'write:mutes',
+          'write:notes',
+          'read:notifications',
+          'write:notifications',
+          'read:reactions',
+          'write:reactions',
+          'write:votes',
+          'read:pages',
+          'write:pages',
+          'write:page-likes',
+          'read:page-likes',
+          'read:user-groups',
+          'write:user-groups',
+          'read:channels',
+          'write:channels',
+          'read:registry',
+          'write:registry'
+        ],
+        callbackUrl: location.origin + '/miauth'
+      }).then(app => {
+        console.log(app)
+        os.api('auth/session/generate', { 'appSecret': app.secret }).then(gen => {
+          localStorage.setItem('appSecret', app.secret)
+          window.open(gen.url, '_blank')
+        })
+      })
     }
   },
   created() {
