@@ -7,6 +7,8 @@ type StateDef = Record<string, {
 	default: any;
 }>;
 
+const _DEV_ = true
+
 type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 
 export class Storage<T extends StateDef> {
@@ -29,8 +31,8 @@ export class Storage<T extends StateDef> {
 		const deviceAccountState = $i ? JSON.parse(localStorage.getItem(this.keyForLocalStorage + '::' + $i.id) || '{}') : {};
 		const registryCache = $i ? JSON.parse(localStorage.getItem(this.keyForLocalStorage + '::cache::' + $i.id) || '{}') : {};
 
-		const state = {};
-		const reactiveState = {};
+		const state: any = {};
+		const reactiveState: any = {};
 		for (const [k, v] of Object.entries(def)) {
 			if (v.where === 'device' && Object.prototype.hasOwnProperty.call(deviceState, k)) {
 				state[k] = deviceState[k];
@@ -53,7 +55,7 @@ export class Storage<T extends StateDef> {
 			// なぜかsetTimeoutしないとapi関数内でエラーになる(おそらく循環参照してることに原因がありそう)
 			setTimeout(() => {
 				api('i/registry/get-all', { scope: ['client', this.key] }).then(kvs => {
-					const cache = {};
+					const cache: any = {};
 					for (const [k, v] of Object.entries(def)) {
 						if (v.where === 'account') {
 							if (Object.prototype.hasOwnProperty.call(kvs, k)) {
@@ -101,6 +103,7 @@ export class Storage<T extends StateDef> {
 				localStorage.setItem(this.keyForLocalStorage + '::cache::' + $i.id, JSON.stringify(cache));
 				api('i/registry/set', {
 					scope: ['client', this.key],
+          // @ts-ignore
 					key,
 					value
 				});
