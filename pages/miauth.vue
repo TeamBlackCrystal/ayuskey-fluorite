@@ -1,6 +1,6 @@
 <template>
   <v-row class='justify-start ma-0' align-content='center' style='height: 100vh; width:100%;'>
-    <v-col style='clip-path: polygon(100% 0, 0% 100%, 100% 100%); position:absolute; height:100%' :style='Banner'>
+    <v-col style='clip-path: polygon(100% 0, 0% 100%, 100% 100%); position:absolute; height:100%' :style='banner'>
 
     </v-col>
     <v-col class='align-right'>
@@ -101,6 +101,7 @@
 
 <script lang='ts'>
 import sha256 from 'crypto-js/sha256'
+import { login } from '~/utils/account';
 import * as os from '~/utils/os'
 
 export default {
@@ -112,7 +113,7 @@ export default {
     }
   },
   computed: {
-    Banner() {
+    banner() {
       return {
         'background': 'url(' + this.meta.bannerUrl + ')'
       }
@@ -125,13 +126,7 @@ export default {
       const token = sha256(state.accessToken + appSecret).toString()
       this.i = state.user
       console.log(state.user)
-      localStorage.setItem('account', JSON.stringify({
-        token,
-        id: state.user.id,
-        isModerator: state.user.isModerator,
-        isAdmin: state.user.isAdmin
-        // TODO: isDeletedがAyuskeyにないので実装後に追加
-      }))
+      login(token);
     }).catch(err => {
       if (err.message === 'No such session.') {
         this.sessionError = true
