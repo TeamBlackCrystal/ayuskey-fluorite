@@ -77,10 +77,12 @@
 </template>
 
 <script lang="ts">
-export default {
-  // layoutプロパティを追記
-  layout ({ store }) {
-    return store.state.loggedIn ? 'default' : 'welcome'
-  }
-}
+import { defineComponent } from '@nuxtjs/composition-api';
+
+// todo: もっと判断を厳密にしてもいいかもしれない
+const data = (localStorage.getItem('account') != null) || false;
+
+export default defineComponent({
+  layout: data ? 'default' : 'welcome'
+})
 </script>
