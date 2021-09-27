@@ -16,7 +16,7 @@ type Account = {
 const data = localStorage.getItem('account');
 
 // TODO: 外部からはreadonlyに
-export const $i = data ? reactive(JSON.parse(data) as Account) : null;
+export const $i: any = data ? reactive(JSON.parse(data) as Account) : null;
 
 // 適当に互換取る
 // #region Load settings
@@ -84,16 +84,14 @@ export function refreshAccount() {
   fetchAccount($i.token).then(updateAccount);
 }
 
-/*
 export async function login(token: Account['token']) {
-	waiting();
-	//if (_DEV_) console.log('logging as token ', token);
-	const me = await fetchAccount(token);
-	localStorage.setItem('account', JSON.stringify(me));
-	addAccount(me.id, token);
-	unisonReload();
+  // waiting();
+  // if (_DEV_) console.log('logging as token ', token);
+  const me = await fetchAccount(token);
+  localStorage.setItem('account', JSON.stringify(me));
+  addAccount(me.id, token);
+  // unisonReload();
 }
-*/
 
 // このファイルに書きたくないけどここに書かないと何故かVeturが認識しない
 /*
