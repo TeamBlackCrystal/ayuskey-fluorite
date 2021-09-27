@@ -9,26 +9,62 @@
         max-width='46em'
         v-if='sessionError === false'
       >
+        <v-subheader>
+          認証が完了しました！
+        </v-subheader>
         <v-list-item three-line>
           <v-list-item-avatar>
             <v-avatar min-height='127'><v-img :src='i.avatarUrl' min-height='128' /></v-avatar>
           </v-list-item-avatar>
           <v-list-item-content>
             <div class='text-overline mb-4'>
-              {{ i.name ? i.name: i.username }}
+              {{ i.name ? i.name: i.username }} さん
             </div>
-            <v-list-item-subtitle>あｗｗｗ</v-list-item-subtitle>
+            <v-list-item-subtitle>ようこそ{{meta.name}}インスタンスへ！</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
         <v-card-actions>
-          <v-btn
-            outlined
-            rounded
-            text
+          <v-dialog
+            v-model="dialog"
+            width="600px"
           >
-            Button
-          </v-btn>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="primary"
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                利用規約に同意して利用を始める
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title>
+                <span class="text-h5">以下の利用規約にご同意ください</span>
+              </v-card-title>
+              <v-card-text>
+
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click="dialog = false"
+                >
+                  Disagree
+                </v-btn>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click="dialog = false"
+                >
+                  Agree
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-card-actions>
       </v-card>
       <v-card
@@ -55,7 +91,7 @@
             rounded-lg
             text
           >
-            トップに戻る
+            <nuxt-link to='/'>トップに戻る</nuxt-link>
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -77,20 +113,11 @@ export default {
   },
   computed: {
     Banner() {
-      this.getMeta()
       return {
         'background': 'url(' + this.meta.bannerUrl + ')'
       }
     }
   },
-  methods: {
-    getMeta() {
-      os.api('meta').then(meta => {
-        this.meta = meta
-      })
-    }
-  },
-
   created() {
     const appSecret = localStorage.getItem('appSecret')
     const userToken = this.$route.query.token
@@ -109,6 +136,9 @@ export default {
       if (err.message === 'No such session.') {
         this.sessionError = true
       }
+    })
+    os.api('meta').then(meta => {
+      this.meta = meta
     })
   }
 }
