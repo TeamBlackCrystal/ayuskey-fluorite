@@ -73,13 +73,14 @@
     </v-main>
   </v-app>
 </template>
-<style lang='stylus' scoped>
 
-</style>
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api';
 
+// todo: もっと判断を厳密にしてもいいかもしれない
+const data = (localStorage.getItem('account') != null) || false;
 
-<script>
-export default {
+export default defineComponent({
   data: () => ({
     links: [
       'Dashboard',
@@ -88,10 +89,6 @@ export default {
       'Updates',
     ],
   }),
-  // layoutプロパティを追記
-  layout ({ store }) {
-    return store.state.loggedIn ? 'default' : 'welcome'
-  }
-}
+  layout: data ? 'default' : 'welcome'
+})
 </script>
-
