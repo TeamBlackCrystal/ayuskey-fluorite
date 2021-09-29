@@ -28,7 +28,7 @@
                 >
               </v-avatar>
               <h2 class='ml-3'>
-                <Mfm v-if='i.name' :text='i.name' style='max-height: 0.2em'/>
+                <MkUserName :user="i" :nowrap="false" />
               </h2>
             </v-card-title>
 
