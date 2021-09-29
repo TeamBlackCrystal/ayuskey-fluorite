@@ -12,7 +12,6 @@ import { concat, sum } from '~/utils/prelude/array';
 import MkGoogle from '~/components/google.vue';
 // import { host } from '~/utils/config';
 import { preorderF, countNodesF } from '~/utils/prelude/tree';
-import MkEmoji from '~/components/emoji.vue';
 import { instance } from '~/utils/instance'
 
 function sumTextsLength(ts: MfmForest): number {
@@ -536,7 +535,7 @@ export default Vue.component('misskey-flavored-markdown', {
 				case 'emoji': {
 					const customEmojis = (instance.emojis || { emojis: [] }) || [];
 					// return [createElement('mk-emoji', {
-          return [createElement(MkEmoji, {
+          return [createElement('MkEmoji', {
 						key: Math.random(),
 						attrs: {
 							emoji: token.node.props.emoji,
