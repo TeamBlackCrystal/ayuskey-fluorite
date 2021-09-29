@@ -16,7 +16,7 @@
             </v-sheet>
           </v-col>
 
-          <!--<Profiel /> 未完成-->
+          <Profile />
 
           <v-col
             cols='12'
