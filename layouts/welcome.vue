@@ -2,7 +2,6 @@
   <v-app dark>
     <div :style='customBanner'
          style='position:absolute; width: 100%; min-height: 40%; background-size: 100% auto; background-repeat: no-repeat;'></div>
-
     <v-container fluid style='padding-left: 15%; padding-right:15%;'>
       <v-row>
         <v-col xs='12' sm='8'>
@@ -89,10 +88,16 @@
               </a>
             </v-list>
           </v-card>
-          <v-card class='rounded-lg' min-height='10em'>
+          <v-skeleton-loader
+            v-if='!meta'
+            type='article'
+            loading='true'
+            transition='scale-transition'
+          ></v-skeleton-loader>
+          <v-card class='rounded-lg' v-else min-height='10em'>
             <v-app-bar class='rounded-0 rounded-t-lg elevation-0'>
               <v-icon small class='pr-2'>fas fa-info-circle</v-icon>
-              {{$t('information')}}
+              {{ $t('information') }}
             </v-app-bar>
             <p class='pa-5'>Version: {{ meta.version }}<br><span>Maintainer: {{ meta.maintainerName }}</span></p>
           </v-card>
@@ -124,8 +129,6 @@ export default defineComponent({
   },
   computed: {
     customBanner() {
-      console.log('あひゃ')
-      console.log(this.meta.bannerUrl)
       return {
         'background': 'url(' + this.meta.bannerUrl + ')'
       }
@@ -170,7 +173,6 @@ export default defineComponent({
         ],
         callbackUrl: location.origin + '/miauth'
       }).then(app => {
-        console.log(app)
         os.api('auth/session/generate', { 'appSecret': app.secret }).then(gen => {
           localStorage.setItem('appSecret', app.secret)
           window.open(gen.url, '_blank')
@@ -184,7 +186,6 @@ export default defineComponent({
     })
 
     os.api('meta').then(meta => {
-      console.log(meta)
       this.meta = meta
     })
 
@@ -218,7 +219,6 @@ export default defineComponent({
       excludeNsfw: true,
       limit: 6
     }).then((notes: any[]) => {
-      console.log(notes)
       const files = concat(notes.map((n: any): any[] => n.files))
       this.photos = files.filter(f => image.includes(f.type)).slice(0, 6)
     })
