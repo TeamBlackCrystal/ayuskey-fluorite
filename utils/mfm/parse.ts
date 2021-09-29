@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { mfmLanguage } from './language';
 import { MfmForest } from './prelude';
 import { normalize } from './normalize';

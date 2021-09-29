@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 // eslint-disable-next-line import/named
 import Vue, { VNode } from 'vue';
 import { length } from 'stringz';
@@ -64,7 +65,7 @@ export default Vue.component('misskey-flavored-markdown', {
 		}
 
 		// @ts-ignore
-    const genEl = (ast: MfmForest): VNode[] => concat(ast.map((token): VNode[] => {
+    const genEl = (ast: MfmForest): VNode[] => concat(ast.map((token): VNode[] => { // eslint-disable-line array-callback-return
 			switch (token.node.type) {
 				case 'text': {
 					const text = token.node.props.text.replace(/(\r\n|\n|\r)/g, '\n');

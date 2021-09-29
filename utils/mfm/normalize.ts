@@ -4,6 +4,7 @@ import { MfmForest, MfmTree } from './prelude';
 import { createTree, createLeaf } from '~/utils/prelude/tree';
 
 function isEmptyTextTree(t: MfmTree): boolean {
+  // eslint-disable-next-line eqeqeq
   return t.node.type == 'text' && t.node.props.text === '';
 }
 
