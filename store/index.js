@@ -1,4 +1,4 @@
-// todo: tsで再実装
+// todo: 消す
 export const state = () => ({
   loggedIn: false
 })
