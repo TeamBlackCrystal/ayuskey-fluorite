@@ -26,6 +26,8 @@ const nuxtConfig: NuxtConfig = {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // init.tsが一番最初
+    { src: '~/plugins/init.ts' },
     { src: '~/plugins/vuetify.ts' }
   ],
 

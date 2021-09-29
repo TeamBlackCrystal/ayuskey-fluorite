@@ -50,7 +50,7 @@
                 <div v-for='announcement in announcements' :key='announcement.id'>
                   <v-card>
                     <v-card-title>{{ announcement.title }}</v-card-title>
-                    <v-card-subtitle>{{ announcement.text }}</v-card-subtitle>
+                    <v-card-subtitle><Mfm :text='announcement.text'/></v-card-subtitle>
                   </v-card>
                   <img v-if='announcement.imageUrl' :src='announcement.imageUrl' />
                 </div>
@@ -112,19 +112,23 @@ import { toUnicode } from 'punycode/'
 import { host, instanceName } from '~/utils/config'
 import * as os from '~/utils/os'
 import { concat } from '~/utils/prelude/array'
+import Mfm from '~/components/misskey-flavored-markdown.vue'
 
 export default defineComponent({
   name: 'Welcome',
+  components: {
+    Mfm
+  },
   data() {
     return {
       meta: {},
       stats: {},
       tags: [],
-      photos: [],
+      photos: {},
       announcements: [],
       onlineUsersCount: 0,
       host: toUnicode(host),
-      instanceName
+      instanceName,
     }
   },
   computed: {
