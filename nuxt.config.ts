@@ -5,6 +5,7 @@ import colors from 'vuetify/es5/util/colors'
 const nuxtConfig: NuxtConfig = {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -28,6 +29,7 @@ const nuxtConfig: NuxtConfig = {
   plugins: [
     // init.tsが一番最初
     { src: '~/plugins/init.ts' },
+    { src: '~/plugins/core.ts' },
     { src: '~/plugins/vuetify.ts' }
   ],
 
@@ -95,7 +97,9 @@ const nuxtConfig: NuxtConfig = {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['@ayuskey/misskey.js']
+  },
 
   styleResources: {
     stylus: []
