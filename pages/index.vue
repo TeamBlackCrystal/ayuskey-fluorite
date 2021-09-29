@@ -1,36 +1,6 @@
 <template>
   <v-app id='inspire'>
-    <v-app-bar
-      app
-      color='white'
-      flat
-    >
-      <v-avatar
-        :color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'"
-        size='32'
-      ></v-avatar>
-
-      <v-tabs
-        centered
-        class='ml-n9'
-        color='grey darken-1'
-      >
-        <v-tab
-          v-for='link in links'
-          :key='link'
-        >
-          {{ link }}
-        </v-tab>
-      </v-tabs>
-
-      <v-avatar
-        class='hidden-sm-and-down'
-        color='grey darken-1 shrink'
-        size='32'
-      ></v-avatar>
-    </v-app-bar>
-
-    <v-main class='grey lighten-3'>
+    <v-main class='grey lighten-3 ma-0 pa-0' style='padding: 0 !important;'>
       <v-container fluid>
         <v-row>
           <v-col
@@ -38,6 +8,7 @@
             sm='2'
           >
             <v-sheet
+              style='position:-webkit-sticky; position:sticky; top:10%;'
               rounded='lg'
               min-height='268'
             >
@@ -45,17 +16,7 @@
             </v-sheet>
           </v-col>
 
-          <v-col
-            cols='12'
-            sm='8'
-          >
-            <v-sheet
-              min-height='70vh'
-              rounded='lg'
-            >
-              <!--  -->
-            </v-sheet>
-          </v-col>
+          <!--<Profiel /> 未完成-->
 
           <v-col
             cols='12'
