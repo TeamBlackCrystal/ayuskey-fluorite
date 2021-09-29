@@ -14,34 +14,36 @@
         </v-subheader>
         <v-list-item three-line>
           <v-list-item-avatar>
-            <v-avatar min-height='127'><v-img :src='i.avatarUrl' min-height='128' /></v-avatar>
+            <v-avatar min-height='127'>
+              <v-img :src='i.avatarUrl' min-height='128' />
+            </v-avatar>
           </v-list-item-avatar>
           <v-list-item-content>
             <div class='text-overline mb-4'>
-              {{ i.name ? i.name: i.username }} さん
+              {{ i.name ? i.name : i.username }} さん
             </div>
-            <v-list-item-subtitle>ようこそ{{meta.name}}インスタンスへ！</v-list-item-subtitle>
+            <v-list-item-subtitle>ようこそ{{ meta.name }}インスタンスへ！</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
         <v-card-actions>
           <v-dialog
-            v-model="dialog"
-            width="600px"
+            v-model='dialog'
+            width='600px'
           >
-            <template v-slot:activator="{ on, attrs }">
+            <template v-slot:activator='{ on, attrs }'>
               <v-btn
-                color="primary"
+                color='primary'
                 dark
-                v-bind="attrs"
-                v-on="on"
+                v-bind='attrs'
+                v-on='on'
               >
                 利用規約に同意して利用を始める
               </v-btn>
             </template>
             <v-card>
               <v-card-title>
-                <span class="text-h5">以下の利用規約にご同意ください</span>
+                <span class='text-h5'>以下の利用規約にご同意ください</span>
               </v-card-title>
               <v-card-text>
 
@@ -49,16 +51,16 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
-                  color="green darken-1"
+                  color='green darken-1'
                   text
-                  @click="dialog = false"
+                  @click='dialog = false'
                 >
                   Disagree
                 </v-btn>
                 <v-btn
-                  color="green darken-1"
+                  color='green darken-1'
                   text
-                  @click="dialog = false"
+                  @click='dialog = false'
                 >
                   Agree
                 </v-btn>
@@ -91,7 +93,7 @@
             rounded-lg
             text
           >
-            <nuxt-link to='/'>トップに戻る</nuxt-link>
+            <nuxt-link to='/' class='text-decoration-none'>{{$t('BackToTop')}}</nuxt-link>
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -101,7 +103,7 @@
 
 <script lang='ts'>
 import sha256 from 'crypto-js/sha256'
-import { login } from '~/utils/account';
+import { login } from '~/utils/account'
 import * as os from '~/utils/os'
 
 export default {
@@ -126,7 +128,7 @@ export default {
       const token = sha256(state.accessToken + appSecret).toString()
       this.i = state.user
       console.log(state.user)
-      login(token);
+      login(token)
     }).catch(err => {
       if (err.message === 'No such session.') {
         this.sessionError = true
