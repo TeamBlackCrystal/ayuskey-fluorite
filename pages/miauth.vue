@@ -115,7 +115,7 @@ export default {
   computed: {
     banner() {
       return {
-        'background': 'url(' + this.meta.bannerUrl + ')'
+        'background': `url(${this.meta.bannerUrl})`
       }
     }
   },
