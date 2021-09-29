@@ -2,7 +2,7 @@
   <v-app id='inspire'>
     <v-main class='grey lighten-3 ma-0 pa-0' style='padding: 0 !important;'>
       <v-container fluid>
-        <v-row>
+        <v-row >
           <v-col
             cols='12'
             sm='2'
@@ -15,9 +15,9 @@
               <!--  -->
             </v-sheet>
           </v-col>
-
+          <v-spacer />
           <Profile />
-
+          <v-spacer />
           <v-col
             cols='12'
             sm='2'

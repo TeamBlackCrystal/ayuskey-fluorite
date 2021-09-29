@@ -1,25 +1,21 @@
 <template>
   <v-col
     cols='12'
-    sm='8'
+    sm='6'
   >
     <v-row>
       <v-col cols='12'>
-        <v-sheet
-          min-height='70vh'
-          rounded='lg'
+        <v-card
+          class='mx-auto my-12'
+          width='100%'
         >
-          <v-card
-            :loading='loading'
-            class='mx-auto my-12'
-            width='100%'
-          >
-            <v-parallax
-              height='300'
-              :src='i.bannerUrl'
-            ></v-parallax>
+          <v-parallax
+            height='300'
+            :src='i.bannerUrl'
+          ></v-parallax>
 
-            <v-card-title class='white--text mt-8' style='position: absolute; top: 10em'>
+          <v-card-title class='white--text mt-8' style='top: -5em; position: relative'>
+            <v-row>
               <v-avatar size='100'>
                 <img
                   alt='user'
@@ -27,33 +23,39 @@
 
                 >
               </v-avatar>
-              <h2 class='ml-3'>
-                <MkUserName :user="i" :nowrap="false" />
-              </h2>
-            </v-card-title>
-
-            <v-card-text style='padding-left: 6em; padding-right: 6em; padding-top: 6em;'>
-              <div>{{ i.description }}</div>
-              <v-btn v-if='i.github' class='mr-5 rounded-lg'>
-                <v-icon small class='mr-2'>fab fa-github</v-icon>
-                {{ i.github.login }}
-              </v-btn>
-              <v-btn v-if='i.discord' class='rounded-lg' style='background-color: #5865F2;'>
-                <v-icon small class='mr-2'>fab fa-discord</v-icon>
-                {{ i.discord.username }}
-              </v-btn>
-            </v-card-text>
-            <div v-for='field in i.fields' :v-key='i.fields'>
-              <v-list two-line class='pa-0'>
-                <v-list-item>
-                  <v-list-item-title>{{ field.name }}</v-list-item-title>
-                  <v-list-item-subtitle>{{ field.value }}</v-list-item-subtitle>
-                </v-list-item>
-              </v-list>
-            </div>
-          </v-card>
-          <!--  -->
-        </v-sheet>
+              <div class='ml-3'>
+                <MkUserName :user='i' :nowrap='false' />
+                <h6>@{{ i.username }}@{{ instance.url }}
+                  <v-icon v-if='i.isAdmin' style='color:rgb(49, 177, 206)' class='mr-2 pl-5'>fas fa-bookmark</v-icon>
+                </h6>
+              </div>
+              <div>
+                <v-card-text style='padding-left: 6em; padding-right: 6em;'>
+                  <div>{{ i.description }}</div>
+                  <v-btn v-if='i.github' class='mr-5 rounded-lg'>
+                    <v-icon small class='mr-2'>fab fa-github</v-icon>
+                    {{ i.github.login }}
+                  </v-btn>
+                  <v-btn v-if='i.discord' class='rounded-lg' style='background-color: #5865F2;'>
+                    <v-icon small class='mr-2'>fab fa-discord</v-icon>
+                    {{ i.discord.username }}
+                  </v-btn>
+                </v-card-text>
+                <v-divider></v-divider>
+                <div v-for='field in i.fields' :v-key='i.fields'>
+                  <v-row>
+                    <v-col cols='6'>
+                      <v-list-item-title>{{ field.name }}</v-list-item-title>
+                    </v-col>
+                    <v-col cols='6'>
+                      <v-list-item-subtitle>{{ field.value }}</v-list-item-subtitle>
+                    </v-col>
+                  </v-row>
+                </div>
+              </div>
+            </v-row>
+          </v-card-title>
+        </v-card>
       </v-col>
       <v-col cols='12'>
         <v-sheet
@@ -81,19 +83,17 @@
 </style>
 
 <script>
-import Mfm from '~/components/misskey-flavored-markdown.vue'
-
 export default {
-  components: {
-    Mfm
-  },
   data() {
     return {
-      i: {}
+      i: {},
+      instance: {}
     }
   },
   created() {
     this.i = JSON.parse(localStorage.getItem('account'))
+    this.instance = JSON.parse(localStorage.getItem('instance'))
+    this.instance.url = new URL(this.instance.uri).host
   }
 }
 </script>
