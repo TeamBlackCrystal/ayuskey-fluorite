@@ -34,7 +34,7 @@
               <v-btn
                 outlined
                 color='white'
-                v-on:click='login'
+                @click='login'
               >
                 {{ $t('login') }}
               </v-btn>
@@ -94,7 +94,7 @@
             loading='true'
             transition='scale-transition'
           ></v-skeleton-loader>
-          <v-card class='rounded-lg' v-else min-height='10em'>
+          <v-card v-else class='rounded-lg' min-height='10em'>
             <v-app-bar class='rounded-0 rounded-t-lg elevation-0'>
               <v-icon small class='pr-2'>fas fa-info-circle</v-icon>
               {{ $t('information') }}
@@ -137,6 +137,49 @@ export default defineComponent({
         'background': 'url(' + this.meta.bannerUrl + ')'
       }
     }
+  },
+  created() {
+    os.api('stats').then(stats => {
+      this.stats = stats
+    })
+
+    os.api('meta').then(meta => {
+      this.meta = meta
+    })
+
+    os.api('get-online-users-count').then(res => {
+      this.onlineUsersCount = res.count
+    })
+
+    os.api('hashtags/list', {
+      sort: '+mentionedLocalUsers',
+      limit: 8
+    }).then(tags => {
+      this.tags = tags
+    })
+
+    os.api('announcements', {
+      limit: 10
+    }).then(announcements => {
+      this.announcements = announcements
+    })
+
+    const image = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/apng',
+      'image/vnd.mozilla.apng'
+    ]
+
+    os.api('notes/local-timeline', {
+      fileType: image,
+      excludeNsfw: true,
+      limit: 6
+    }).then((notes: any[]) => {
+      const files = concat(notes.map((n: any): any[] => n.files))
+      this.photos = files.filter(f => image.includes(f.type)).slice(0, 6)
+    })
   },
   methods: {
     login() {
@@ -183,49 +226,6 @@ export default defineComponent({
         })
       })
     }
-  },
-  created() {
-    os.api('stats').then(stats => {
-      this.stats = stats
-    })
-
-    os.api('meta').then(meta => {
-      this.meta = meta
-    })
-
-    os.api('get-online-users-count').then(res => {
-      this.onlineUsersCount = res.count
-    })
-
-    os.api('hashtags/list', {
-      sort: '+mentionedLocalUsers',
-      limit: 8
-    }).then(tags => {
-      this.tags = tags
-    })
-
-    os.api('announcements', {
-      limit: 10
-    }).then(announcements => {
-      this.announcements = announcements
-    })
-
-    const image = [
-      'image/jpeg',
-      'image/png',
-      'image/gif',
-      'image/apng',
-      'image/vnd.mozilla.apng'
-    ]
-
-    os.api('notes/local-timeline', {
-      fileType: image,
-      excludeNsfw: true,
-      limit: 6
-    }).then((notes: any[]) => {
-      const files = concat(notes.map((n: any): any[] => n.files))
-      this.photos = files.filter(f => image.includes(f.type)).slice(0, 6)
-    })
   }
 })
 </script>
