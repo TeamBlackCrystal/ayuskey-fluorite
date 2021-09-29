@@ -4,7 +4,7 @@ import { markRaw, reactive, ref } from '@nuxtjs/composition-api';
 // import { Component } from '@nuxt/components';
 // import { EventEmitter } from 'eventemitter3';
 // import insertTextAtCursor from 'insert-text-at-cursor';
-import * as Misskey from 'misskey-js';
+import * as Misskey from '@ayuskey/misskey.js';
 // import * as Sentry from '@sentry/browser';
 // import MkPostFormDialog from '@client/components/post-form-dialog.vue';
 // import MkWaitingDialog from '@client/components/waiting-dialog.vue';

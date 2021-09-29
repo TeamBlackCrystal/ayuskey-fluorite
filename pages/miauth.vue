@@ -5,9 +5,9 @@
     </v-col>
     <v-col class='align-right'>
       <v-card
+        v-if='sessionError === false'
         class='mx-auto'
         max-width='46em'
-        v-if='sessionError === false'
       >
         <v-subheader>
           認証が完了しました！
@@ -31,7 +31,7 @@
             v-model='dialog'
             width='600px'
           >
-            <template v-slot:activator='{ on, attrs }'>
+            <template #activator="{ on, attrs }">
               <v-btn
                 color='primary'
                 dark
@@ -70,9 +70,9 @@
         </v-card-actions>
       </v-card>
       <v-card
+        v-else
         class='mx-auto'
         max-width='50%'
-        v-else
       >
 
         <v-list-item three-line>
@@ -127,7 +127,6 @@ export default {
     os.api('auth/session/userkey', { appSecret, token: userToken }).then(state => {
       const token = sha256(state.accessToken + appSecret).toString()
       this.i = state.user
-      console.log(state.user)
       login(token)
     }).catch(err => {
       if (err.message === 'No such session.') {

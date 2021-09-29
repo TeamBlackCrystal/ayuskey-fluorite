@@ -39,9 +39,10 @@
 import { defineComponent } from '@nuxtjs/composition-api';
 
 // todo: もっと判断を厳密にしてもいいかもしれない
-const data = (localStorage.getItem('account') != null) || false;
+const isLogin = (localStorage.getItem('account') != null);
 
 export default defineComponent({
+  layout: isLogin ? 'default' : 'welcome',
   data: () => ({
     links: [
       'Dashboard',
@@ -49,7 +50,6 @@ export default defineComponent({
       'Profile',
       'Updates',
     ],
-  }),
-  layout: data ? 'default' : 'welcome'
+  })
 })
 </script>
