@@ -1,6 +1,5 @@
 /* eslint-disable eqeqeq */
-import * as P from 'parsimmon';
-import { Language } from 'parsimmon'
+import P, { Language } from 'parsimmon'
 import { toUnicode } from 'punycode/';
 import { createLeaf, createTree, urlRegex } from './prelude';
 import { emojiRegex } from '~/utils/misc/emoji-regex';
