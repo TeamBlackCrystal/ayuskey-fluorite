@@ -18,6 +18,7 @@ export async function fetchInstance() {
   });
 
   for (const [k, v] of Object.entries(meta)) {
+    // @ts-ignore
     instance[k] = v;
   }
 

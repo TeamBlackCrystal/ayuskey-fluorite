@@ -6,11 +6,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from '@nuxtjs/composition-api';
 // import { getStaticImageUrl } from '~/script/get-static-image-url';
 import { twemojiSvgBase } from '~/utils/misc/twemoji-base';
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     name: {
       type: String,
@@ -45,19 +45,21 @@ export default Vue.extend({
 
   computed: {
     alt(): string {
+      // @ts-ignore
       return this.customEmoji ? `:${this.customEmoji.name}:` : this.char;
     },
 
     useOsDefaultEmojis(): boolean {
-      return this.$store.state.device.useOsDefaultEmojis && !this.isReaction;
+      // return this.$store.state.device.useOsDefaultEmojis && !this.isReaction;
+      return false;
     }
   },
 
   watch: {
     customEmojis() {
       if (this.name) {
-        // eslint-disable-next-line eqeqeq
-        const customEmoji = this.customEmojis.find(x => x.name == this.name);
+        // @ts-ignore
+        const customEmoji = this.customEmojis.find(x => x.name == this.name); // eslint-disable-line eqeqeq
         if (customEmoji) {
           this.customEmoji = customEmoji;
           /*
@@ -65,6 +67,7 @@ export default Vue.extend({
             ? getStaticImageUrl(customEmoji.url)
             : customEmoji.url;
           */
+          // @ts-ignore
           this.url = customEmoji.url;
         }
       }
@@ -73,8 +76,8 @@ export default Vue.extend({
 
   created() {
     if (this.name) {
-      // eslint-disable-next-line eqeqeq
-      const customEmoji = this.customEmojis.find(x => x.name == this.name);
+      // @ts-ignore
+      const customEmoji = this.customEmojis.find(x => x.name == this.name); // eslint-disable-line eqeqeq
       if (customEmoji) {
         this.customEmoji = customEmoji;
         /*
@@ -82,6 +85,7 @@ export default Vue.extend({
           ? getStaticImageUrl(customEmoji.url)
           : customEmoji.url;
         */
+        // @ts-ignore
         this.url = customEmoji.url;
       } else {
         // const emoji = lib[this.name];
@@ -90,15 +94,18 @@ export default Vue.extend({
         // }
       }
     } else {
+      // @ts-ignore
       this.char = this.emoji;
     }
 
     if (this.char) {
+      // @ts-ignore
       let codes = Array.from(this.char).map(x => x.codePointAt(0).toString(16));
       // eslint-disable-next-line eqeqeq
       if (!codes.includes('200d')) codes = codes.filter(x => x != 'fe0f');
       codes = codes.filter(x => x && x.length);
 
+      // @ts-ignore
       this.url = `${twemojiSvgBase}/${codes.join('-')}.svg`;
     }
   },
