@@ -12,7 +12,7 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@ayuskey/misskey.js": "^1.0.0-rc.2",
+    "@ayuskey/misskey.js": "^1.0.0-rc.3",
     "@fortawesome/fontawesome-free": "5.15.4",
     "@nuxtjs/composition-api": "0.29.2",
     "@nuxtjs/i18n": "7.0.3",

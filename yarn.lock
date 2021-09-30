@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@ayuskey/misskey.js@^1.0.0-rc.2":
-  version "1.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@ayuskey/misskey.js/-/misskey.js-1.0.0-rc.2.tgz#e57ca7c93dd9059382262716b53788d30bdbad4b"
-  integrity sha512-vriOKZxe4sePYTCZrGpiSkd7sgx8wtBbZI1Fm6iO/qRkGzTc5DqUC71Z06NE+vfRskcWBBSNBaHT+puibs6srw==
+"@ayuskey/misskey.js@^1.0.0-rc.3":
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@ayuskey/misskey.js/-/misskey.js-1.0.0-rc.3.tgz#133aaa9a91099163edc7e1712243cceb21a8f274"
+  integrity sha512-V0CSRlhdLJde2X+c0KlT0hz7D6ReF7PYRYCBKx6EPyOrQ/E3/HYZ97DVD8ZIe9S5CXRgomtvOqCfhSIsF3CM5g==
   dependencies:
     autobind-decorator "^2.4.0"
     eventemitter3 "^4.0.7"
