@@ -82,18 +82,22 @@
 }
 </style>
 
-<script>
-export default {
+<script lang='ts'>
+import { defineComponent } from '@nuxtjs/composition-api'
+import { instance as Instance } from '~/utils/instance'
+
+export default defineComponent({
   data() {
     return {
       i: {},
-      instance: {}
+      instance: Instance
     }
   },
   created() {
-    this.i = JSON.parse(localStorage.getItem('account'))
-    this.instance = JSON.parse(localStorage.getItem('instance'))
+    this.i = JSON.parse(localStorage.getItem('account') || '')
+    // MkAcct使えばこの辺いらない
+    // @ts-ignore
     this.instance.url = new URL(this.instance.uri).host
   }
-}
+})
 </script>

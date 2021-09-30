@@ -126,6 +126,7 @@ export default defineComponent({
   created() {
     const appSecret = localStorage.getItem('appSecret')
     const userToken = this.$route.query.token
+    // @ts-ignore
     os.api('auth/session/userkey', { appSecret, token: userToken }).then(state => {
       const token = sha256(state.accessToken + appSecret).toString()
       this.i = state.user
