@@ -102,11 +102,13 @@
 </template>
 
 <script lang='ts'>
-import sha256 from 'crypto-js/sha256'
-import { login } from '~/utils/account'
-import * as os from '~/utils/os'
+import { defineComponent } from '@nuxtjs/composition-api';
+import sha256 from 'crypto-js/sha256';
+import { login } from '~/utils/account';
+import * as os from '~/utils/os';
+import { instance } from '~/utils/instance'
 
-export default {
+export default defineComponent({
   data() {
     return {
       i: {},
@@ -117,7 +119,7 @@ export default {
   computed: {
     banner() {
       return {
-        'background': `url(${this.meta.bannerUrl})`
+        'background': `url(${instance.bannerUrl})`
       }
     }
   },
@@ -137,5 +139,5 @@ export default {
       this.meta = meta
     })
   }
-}
+})
 </script>

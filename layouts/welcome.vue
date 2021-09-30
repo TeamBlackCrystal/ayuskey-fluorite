@@ -112,20 +112,17 @@ import { toUnicode } from 'punycode/'
 import { host, instanceName } from '~/utils/config'
 import * as os from '~/utils/os'
 import { concat } from '~/utils/prelude/array'
-import Mfm from '~/components/misskey-flavored-markdown.vue'
+import { instance } from '~/utils/instance'
 
 export default defineComponent({
   name: 'Welcome',
-  components: {
-    Mfm
-  },
   data() {
     return {
       meta: {},
       stats: {},
-      tags: [],
+      tags: {},
       photos: {},
-      announcements: [],
+      announcements: {},
       onlineUsersCount: 0,
       host: toUnicode(host),
       instanceName,
@@ -134,7 +131,7 @@ export default defineComponent({
   computed: {
     customBanner() {
       return {
-        'background': 'url(' + this.meta.bannerUrl + ')'
+        'background': 'url(' + instance.bannerUrl + ')'
       }
     }
   },
