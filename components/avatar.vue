@@ -56,10 +56,12 @@ export default Vue.extend({
   },
   watch: {
     'user.avatarBlurhash'() {
+      // @ts-ignore
       this.$el.style.color = this.getBlurhashAvgColor(this.user.avatarBlurhash);
     }
   },
   mounted() {
+    // @ts-ignore
     this.$el.style.color = this.getBlurhashAvgColor(this.user.avatarBlurhash);
   },
   methods: {
