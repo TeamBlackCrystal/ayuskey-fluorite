@@ -6,7 +6,8 @@ const siteName = 'Ayuskey';
 
 export const host = address.host;
 export const hostname = address.hostname;
-export const url = address.origin;
+// export const url = address.origin;
+export const url = `https://${instanceHost}`
 // export const apiUrl = url + '/api';
 // export const wsUrl = url.replace('http://', 'ws://').replace('https://', 'wss://') + '/streaming';
 export const apiUrl = `https://${instanceHost}/api`;
