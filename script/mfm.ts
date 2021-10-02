@@ -9,7 +9,7 @@ import { parse, parsePlain } from '~/utils/mfm/parse';
 import { concat, sum } from '~/utils/prelude/array';
 // import MkFormula from '~/components/formula.vue';
 // import MkCode from '~/components/code.vue';
-import MkGoogle from '~/components/google.vue';
+import MkGoogle from '~/components/etc/google.vue';
 // import { host } from '~/utils/config';
 import { preorderF, countNodesF } from '~/utils/prelude/tree';
 import { instance } from '~/utils/instance'
