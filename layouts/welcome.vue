@@ -11,15 +11,15 @@
               <p class='pr-7'>{{ host }} - Powered by Ayuskey.</p>
               <div class='pr-5'>
                 <v-icon small>fas fa-user</v-icon>
-                {{ stats.originalUsersCount }}
+                {{ number(stats.originalUsersCount) }}
               </div>
               <div class='pr-5'>
                 <v-icon small class='light-green--text'>fas fa-user</v-icon>
-                {{ onlineUsersCount }}
+                {{ number(onlineUsersCount) }}
               </div>
               <div>
                 <v-icon small>fas fa-pencil-alt</v-icon>
-                {{ stats.originalNotesCount }}
+                {{ number(stats.originalNotesCount) }}
               </div>
             </v-row>
             <p>{{ meta.description }}</p>
@@ -109,23 +109,23 @@
 <script lang='ts'>
 import { defineComponent } from '@nuxtjs/composition-api'
 import { toUnicode } from 'punycode/'
-import { host, instanceName } from '~/utils/config'
+import { host } from '~/utils/config'
 import * as os from '~/utils/os'
 import { concat } from '~/utils/prelude/array'
 import { instance } from '~/utils/instance'
+import number from '~/script/filters/number'
 
 export default defineComponent({
   name: 'Welcome',
   data() {
     return {
-      meta: {},
+      meta: this.$instance,
       stats: {},
       tags: {},
       photos: {},
       announcements: {},
       onlineUsersCount: 0,
       host: toUnicode(host),
-      instanceName,
     }
   },
   computed: {
@@ -138,10 +138,6 @@ export default defineComponent({
   created() {
     os.api('stats').then(stats => {
       this.stats = stats
-    })
-
-    os.api('meta').then(meta => {
-      this.meta = meta
     })
 
     os.api('get-online-users-count').then(res => {
@@ -222,7 +218,8 @@ export default defineComponent({
           window.open(gen.url, '_blank')
         })
       })
-    }
+    },
+    number
   }
 })
 </script>
