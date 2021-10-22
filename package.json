@@ -14,7 +14,7 @@
   "dependencies": {
     "@ayuskey/misskey.js": "1.0.0-rc.3",
     "@fortawesome/fontawesome-free": "5.15.4",
-    "@nuxtjs/i18n": "7.0.3",
+    "@nuxtjs/i18n": "7.1.0",
     "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/style-resources": "1.2.1",
     "apexcharts": "3.28.3",
