@@ -51,25 +51,24 @@ const nuxtConfig: NuxtConfig = {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    [
-      '@nuxtjs/i18n',
-      {
-        locales: [
-          { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },
-          { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' }
-        ],
-        defaultLocale: 'ja',
-        langDir: 'locales/',
-        strategy: 'prefix_and_default',
-        vueI18n: {
-          fallbackLocale: 'ja'
-        },
-        vueI18nLoader: true,
-        lazy: true
-      }
-    ]
+    '@nuxtjs/i18n',
   ],
-  i18n: {},
+
+  i18n: {
+    locales: [
+      { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },
+      { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' }
+    ],
+    defaultLocale: 'ja',
+    langDir: 'locales/',
+    strategy: 'prefix_and_default',
+    vueI18n: {
+      fallbackLocale: 'ja'
+    },
+    vueI18nLoader: true,
+    lazy: true
+  },
+
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
