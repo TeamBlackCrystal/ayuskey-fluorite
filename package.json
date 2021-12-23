@@ -22,7 +22,7 @@
     "crypto-js": "4.1.1",
     "mfm-js": "0.19.0",
     "nuxt": "2.15.8",
-    "parsimmon": "1.18.0",
+    "parsimmon": "1.18.1",
     "punycode": "2.1.1",
     "stringz": "2.1.0",
     "vue": "2.6.14",
