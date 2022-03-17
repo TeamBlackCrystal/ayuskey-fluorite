@@ -46,7 +46,7 @@
     "eslint-plugin-nuxt": "2.0.0",
     "eslint-plugin-vue": "7.19.1",
     "nuxt-vite": "0.3.5",
-    "prettier": "2.4.1",
+    "prettier": "2.6.0",
     "sass": "1.43.5",
     "sass-loader": "10.2.0",
     "stylus": "0.55.0",
