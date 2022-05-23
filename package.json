@@ -20,7 +20,7 @@
     "apexcharts": "3.30.0",
     "core-js": "3.19.1",
     "crypto-js": "4.1.1",
-    "mfm-js": "0.19.0",
+    "mfm-js": "0.22.1",
     "nuxt": "2.15.8",
     "parsimmon": "1.18.0",
     "punycode": "2.1.1",
