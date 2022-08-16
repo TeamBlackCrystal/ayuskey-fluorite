@@ -1,38 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
-    ],
-    "esModuleInterop": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "noEmit": true,
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
-    },
-    "types": [
-      "@nuxt/types",
-      "@types/node",
-      "@nuxtjs/i18n",
-      "./@types"
-    ]
+    "jsx": "react-jsx"
   },
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    "dist"
-  ]
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
