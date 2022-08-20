@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "prepare": "pnpm husky install",
+    "preview": "vite preview",
+    "format": "pnpm rome format src",
+    "lint": "pnpm rome check src"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.8",
@@ -26,7 +29,25 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "rome": "0.8.0-next.ff4153b",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
+  },
+  "lint-staged": {
+    "**/*.tsx": [
+      "pnpm lint",
+      "pnpm format"
+    ],
+    "**/*.ts": [
+      "pnpm lint",
+      "pnpm format"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
