@@ -1,6 +1,5 @@
 import * as mfm from "mfm-js";
 import { Link } from "react-router-dom";
-import { apiClient } from "./api";
 
 // export const MFMParse = (data: mfm.MfmNode) => {
 //   console.log(data.type)

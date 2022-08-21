@@ -1,5 +1,4 @@
-import { Stack } from "@chakra-ui/react";
-import { Grid, Card, Text, Avatar, Loading, Button } from "@nextui-org/react";
+import { Grid, Card, Text, Loading } from "@nextui-org/react";
 import newNoteSound from "../assets/sounds/syuilo/down.mp3";
 import { FC, useEffect, useState } from "react";
 import { Note } from "../components/note";
