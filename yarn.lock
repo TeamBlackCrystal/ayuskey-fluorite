@@ -1100,7 +1100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/collections@npm:3.4.2, @react-stately/collections@npm:^3.4.0, @react-stately/collections@npm:^3.4.2":
+"@react-stately/collections@npm:^3.4.0, @react-stately/collections@npm:^3.4.2":
   version: 3.4.2
   resolution: "@react-stately/collections@npm:3.4.2"
   dependencies:
@@ -1138,7 +1138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/menu@npm:3.4.0, @react-stately/menu@npm:^3.3.0":
+"@react-stately/menu@npm:^3.3.0, @react-stately/menu@npm:^3.4.0":
   version: 3.4.0
   resolution: "@react-stately/menu@npm:3.4.0"
   dependencies:
@@ -1781,35 +1781,8 @@ __metadata:
   dependencies:
     "@ayuskey/misskey.js": ^1.0.0-rc.6
     "@nextui-org/react": 1.0.0-beta.9
-    "@react-aria/button": 3.5.0
-    "@react-aria/checkbox": 3.4.0
-    "@react-aria/dialog": 3.2.0
-    "@react-aria/focus": 3.6.0
-    "@react-aria/i18n": 3.4.0
-    "@react-aria/interactions": 3.9.0
-    "@react-aria/label": 3.3.0
-    "@react-aria/menu": 3.5.0
-    "@react-aria/overlays": 3.9.0
-    "@react-aria/radio": 3.2.0
-    "@react-aria/ssr": 3.2.0
-    "@react-aria/table": 3.3.0
-    "@react-aria/utils": 3.13.0
-    "@react-aria/visually-hidden": 3.3.0
-    "@react-stately/checkbox": 3.1.0
-    "@react-stately/collections": 3.4.2
-    "@react-stately/data": 3.5.0
-    "@react-stately/menu": 3.4.0
-    "@react-stately/overlays": 3.3.0
-    "@react-stately/radio": 3.4.0
-    "@react-stately/table": 3.2.0
-    "@react-stately/toggle": 3.3.0
-    "@react-stately/tree": 3.3.0
-    "@react-types/button": ^3.5.0
-    "@react-types/checkbox": 3.3.0
-    "@react-types/grid": 3.1.0
-    "@react-types/menu": 3.6.0
-    "@react-types/overlays": 3.6.0
-    "@react-types/shared": 3.13.0
+    "@react-stately/collections": ^3.4.2
+    "@react-stately/menu": ^3.4.0
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
     "@types/react-router-dom": ^5.3.3
@@ -1819,13 +1792,13 @@ __metadata:
     husky: ^8.0.1
     lint-staged: ^13.0.3
     mfm-js: ^0.23.0
-    query-string: ^7.1.1
     react: ^18.2.0
     react-dom: ^18.2.0
     react-icons: ^4.4.0
     react-query: ^3.39.2
     react-router-dom: 6
     rome: 0.8.0-next.ff4153b
+    strictcat: ^0.0.1-alpha.4
     typescript: ^4.6.4
     use-sound: ^4.0.1
     vite: ^3.0.7
@@ -2104,13 +2077,6 @@ __metadata:
     supports-color:
       optional: true
   checksum: 3dbad3f94ea64f34431a9cbf0bafb61853eda57bff2880036153438f50fb5a84f27683ba0d8e5426bf41a8c6ff03879488120cf5b3a761e77953169c0600a708
-  languageName: node
-  linkType: hard
-
-"decode-uri-component@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "decode-uri-component@npm:0.2.0"
-  checksum: f3749344ab9305ffcfe4bfe300e2dbb61fc6359e2b736812100a3b1b6db0a5668cba31a05e4b45d4d63dbf1a18dfa354cd3ca5bb3ededddabb8cd293f4404f94
   languageName: node
   linkType: hard
 
@@ -2454,13 +2420,6 @@ __metadata:
   dependencies:
     to-regex-range: ^5.0.1
   checksum: cc283f4e65b504259e64fd969bcf4def4eb08d85565e906b7d36516e87819db52029a76b6363d0f02d0d532f0033c9603b9e2d943d56ee3b0d4f7ad3328ff917
-  languageName: node
-  linkType: hard
-
-"filter-obj@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "filter-obj@npm:1.1.0"
-  checksum: cf2104a7c45ff48e7f505b78a3991c8f7f30f28bd8106ef582721f321f1c6277f7751aacd5d83026cb079d9d5091082f588d14a72e7c5d720ece79118fa61e10
   languageName: node
   linkType: hard
 
@@ -3396,18 +3355,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"query-string@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "query-string@npm:7.1.1"
-  dependencies:
-    decode-uri-component: ^0.2.0
-    filter-obj: ^1.1.0
-    split-on-first: ^1.0.0
-    strict-uri-encode: ^2.0.0
-  checksum: b227d1f588ae93f9f0ad078c6b811295fa151dc5a160a03bb2bac5fa0e6919cb1daa570aad1d288e77c8e89fde5362ba505b1014e6e793da9b1e885b59a690a6
-  languageName: node
-  linkType: hard
-
 "react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -3808,13 +3755,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"split-on-first@npm:^1.0.0":
-  version: 1.1.0
-  resolution: "split-on-first@npm:1.1.0"
-  checksum: 16ff85b54ddcf17f9147210a4022529b343edbcbea4ce977c8f30e38408b8d6e0f25f92cd35b86a524d4797f455e29ab89eb8db787f3c10708e0b47ebf528d30
-  languageName: node
-  linkType: hard
-
 "ssri@npm:^9.0.0":
   version: 9.0.1
   resolution: "ssri@npm:9.0.1"
@@ -3824,10 +3764,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strict-uri-encode@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "strict-uri-encode@npm:2.0.0"
-  checksum: eaac4cf978b6fbd480f1092cab8b233c9b949bcabfc9b598dd79a758f7243c28765ef7639c876fa72940dac687181b35486ea01ff7df3e65ce3848c64822c581
+"strictcat@npm:^0.0.1-alpha.4":
+  version: 0.0.1-alpha.4
+  resolution: "strictcat@npm:0.0.1-alpha.4"
+  checksum: 05b15b936c79dd0a2bd64f77301fdb4a657e397ac33e1fd88e50ecb51b2c1788b0482623bc9a36e4bc47d31ae5f8fa448d867b5fc6e687490b5c0e41bbd58503
   languageName: node
   linkType: hard
 
