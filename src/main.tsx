@@ -1,30 +1,26 @@
-import { StrictMode } from "react";
+import { createContext, StrictMode, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { ChakraProvider } from "@chakra-ui/react";
 
-// import App from "./App";
-import "./index.css";
+// import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools';
-import { useWebSocketContext, WebSocketContextProvider } from "./contexts/webSocket";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+import { BrowserRouter } from "react-router-dom";
+
+import { App } from "./App";
 
 const queryClient = new QueryClient();
-
-const App = () => {
-    const session = useWebSocketContext()
-    return (<></>) 
-}
 
 
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-	<StrictMode>
-		<QueryClientProvider client={queryClient}>
-            <WebSocketContextProvider>
-			<ChakraProvider><App /></ChakraProvider>
-            </WebSocketContextProvider>
-            <ReactQueryDevtools />
-            
-		</QueryClientProvider>
-	</StrictMode>,
+	// <StrictMode>
+  <QueryClientProvider client={queryClient}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+      <ReactQueryDevtools/>
+
+      </QueryClientProvider>
+	// </StrictMode>,
 );
