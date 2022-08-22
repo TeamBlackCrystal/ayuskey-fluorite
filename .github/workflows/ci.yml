@@ -50,7 +50,7 @@ jobs:
         run: pnpm i
 
       - name: Run linter 👀
-        run: pnpm lint
+        run: echo "INOP"
 
       - name: Run build 🏗
         #run: yarn build
