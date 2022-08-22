@@ -6,7 +6,7 @@ type TAuth = {
   setHost: (newHost: string) => void
 }
 
-const getLocalStorage = <T> (key:string, defaultValue: T): string | T => {
+export const getLocalStorage = <T> (key:string, defaultValue: T): string | T => {
   const item  = window.localStorage.getItem(key)
   return typeof item === 'string' ? item : defaultValue
 
