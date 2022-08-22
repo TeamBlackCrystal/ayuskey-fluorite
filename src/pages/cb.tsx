@@ -14,7 +14,7 @@ export const CallBack: FC = () => {
 
   useEffect(() => {
     if (!(secret && token)) return
-    apiClient(`https://${storage.host}`).call("POST", "/api/auth/session/userkey", {}, {appSecret: secret, token: token}).then((res) => {
+    apiClient(`${storage.host}`).call("POST", "/api/auth/session/userkey", {}, {appSecret: secret, token: token}).then((res) => {
       if (res.type === 'failed') throw res.type, res.data
       storage.setI(SHA256(res.data.accessToken+secret).toString())
     })

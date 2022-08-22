@@ -28,7 +28,7 @@ export const LoginModal = () => {
 	};
 
 	const Login = async () => {
-		const api = apiClient<Schema>(`https://${instance}`);
+		const api = apiClient<Schema>(`${instance}`);
 		const createApp = await api.call(
 			"POST",
 			"/api/app/create",

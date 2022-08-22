@@ -21,10 +21,16 @@ export const useStream = create<TCommon>(
 
 type TCurrentTimeline = {
 	currentTimeline: Timelines
+  setCurrentTimeline: (timeline: Timelines) => void
 };
 
 export const useCurrentTimeline = create<TCurrentTimeline>(
 	(set) => ({
 		currentTimeline: "homeTimeline",
+    setCurrentTimeline(timeline: Timelines) {
+        set(() => {
+          return {currentTimeline: timeline}
+        })
+    },
 	}),
 );

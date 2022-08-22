@@ -10,7 +10,7 @@ import { useCurrentTimeline, useStream } from "../store/stream";
 import { useAyuskeyClient } from "./useAyuskeyClient";
 
 const storage = useLocalStorage.getState()
-const stream = storage.host && storage.i ? new Stream(`https://${storage.host}`, {token: String(storage.i)}) : null
+const stream = storage.host && storage.i ? new Stream(`${storage.host}`, {token: String(storage.i)}) : null
 
 
 const getTimelineEndpoint = (timeline: Timelines) => {
