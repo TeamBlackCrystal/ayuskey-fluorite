@@ -9,6 +9,7 @@ specifiers:
   '@react-stately/collections': ^3.4.2
   '@react-stately/menu': ^3.4.0
   '@types/crypto-js': ^4.1.1
+  '@types/dexie': ^1.3.1
   '@types/node': ^18.7.9
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
@@ -16,6 +17,8 @@ specifiers:
   '@types/react-sound': ^1.2.3
   '@vitejs/plugin-react': ^2.0.1
   crypto-js: ^4.1.1
+  dexie: ^3.2.2
+  dexie-react-hooks: ^1.1.1
   framer-motion: ^7.2.0
   husky: ^8.0.1
   lint-staged: ^13.0.3
@@ -42,9 +45,12 @@ dependencies:
   '@react-stately/collections': 3.4.2_react@18.2.0
   '@react-stately/menu': 3.4.0_react@18.2.0
   '@types/crypto-js': 4.1.1
+  '@types/dexie': 1.3.1
   '@types/react-router-dom': 5.3.3
   '@types/react-sound': 1.2.3
   crypto-js: 4.1.1
+  dexie: 3.2.2
+  dexie-react-hooks: 1.1.1_vjjs7rll6qsrtvmbdjeilqr2uq
   framer-motion: 7.2.0_biqbaboplfbrettd7655fr4n2y
   mfm-js: 0.23.0
   notistack: 2.0.5_cc56alapomqwos3hjuzlsdnlam
@@ -1563,6 +1569,13 @@ packages:
     resolution: {integrity: sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==}
     dev: false
 
+  /@types/dexie/1.3.1:
+    resolution: {integrity: sha512-f4Gpv89MCwEl1r9LbLLHXzT2qduVUNfyj/sINrY7MXqZvSEGYZwEWLIUAnVD44YPt5/0tkNSK6wbyhpb9iF47A==}
+    deprecated: This is a stub types definition for Dexie.js (https://github.com/dfahlander/Dexie.js). Dexie.js provides its own type definitions, so you don't need @types/dexie installed!
+    dependencies:
+      dexie: 3.2.2
+    dev: false
+
   /@types/history/4.7.11:
     resolution: {integrity: sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==}
     dev: false
@@ -1882,6 +1895,23 @@ packages:
 
   /detect-node/2.1.0:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
+    dev: false
+
+  /dexie-react-hooks/1.1.1_vjjs7rll6qsrtvmbdjeilqr2uq:
+    resolution: {integrity: sha512-Cam5JP6PxHN564RvWEoe8cqLhosW0O4CAZ9XEVYeGHJBa6KEJlOpd9CUpV3kmU9dm2MrW97/lk7qkf1xpij7gA==}
+    peerDependencies:
+      '@types/react': '>=16'
+      dexie: '>=3.1.0-alpha.1 <5.0.0'
+      react: '>=16'
+    dependencies:
+      '@types/react': 18.0.17
+      dexie: 3.2.2
+      react: 18.2.0
+    dev: false
+
+  /dexie/3.2.2:
+    resolution: {integrity: sha512-q5dC3HPmir2DERlX+toCBbHQXW5MsyrFqPFcovkH9N2S/UW/H3H5AWAB6iEOExeraAu+j+zRDG+zg/D7YhH0qg==}
+    engines: {node: '>=6.0'}
     dev: false
 
   /dom-helpers/5.2.1:
