@@ -10,7 +10,7 @@ import { useCurrentTimeline, useStream } from "../store/stream";
 import { useAyuskeyClient } from "./useAyuskeyClient";
 
 const storage = useLocalStorage.getState()
-const stream = storage.host && storage.i ? new Stream(`${storage.host}`, {token: String(storage.i)}) : null
+const stream = storage.mainAccount && storage.mainAccount.host && storage.mainAccount.i ? new Stream(`${storage.mainAccount?.host}`, {token: String(storage.mainAccount.i)}) : null
 
 
 const getTimelineEndpoint = (timeline: Timelines) => {
@@ -32,7 +32,7 @@ export const useStreaming = () => {
     if (!stream) return
     const mainChannel = stream.useChannel('main')
     // setStream(stream)
-  }, [storage.i])
+  }, [storage.mainAccount])
 
   useEffect(() => {
     if (!stream) return
@@ -43,7 +43,7 @@ export const useStreaming = () => {
     })
   }, [stream]);
   useEffect(() => {
-    if (!storage.i) return
+    if (!storage.mainAccount?.i) return
     const currentE = getTimelineEndpoint(currentTimeline)
     if (currentE === null) return
     api.request(currentE).then((res) => {
