@@ -10,7 +10,10 @@ const getLocalStorage = <T> (key:string, defaultValue: T): string | T => {
   const item  = window.localStorage.getItem(key)
   return typeof item === 'string' ? item : defaultValue
 
+export const removeLocalStorage = (key:string): void => {
+  window.localStorage.removeItem(key)
 }
+
 const setLocalStorage = (key:string, value: object | string): void => {
   const _value = typeof value === "object" ? JSON.stringify(value) : value
   window.localStorage.setItem(key, _value)
