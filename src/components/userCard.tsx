@@ -15,7 +15,7 @@ interface Props {
 export const UserTwitterCard: FC<Props> = ({avatarProps, css, onPress, props, user}) => {
   const [following, setFollowing] = useState(false);
   const api = useAyuskeyClient()
-  const {data, isLoading} = useQuery(`${user.id}Profile`, () => api.request("users/show", {username: user.username}))
+  const {data, isLoading} = useQuery(`${user.id}Profile`, () => api.request("users/show", {userId: user.id}))
 
 
 
@@ -104,7 +104,7 @@ export const UserTwitterCard: FC<Props> = ({avatarProps, css, onPress, props, us
           >
             4
           </Text>
-          Following
+          フォロー
         </Text>
         <Spacer inline x={0.5} />
         <Text className="user-twitter-card__text" size={14} color="#888888">
@@ -117,7 +117,7 @@ export const UserTwitterCard: FC<Props> = ({avatarProps, css, onPress, props, us
           >
             97.1K
           </Text>
-          Followers
+          フォロワー
         </Text>
       </Grid.Container>
     </Grid.Container>
