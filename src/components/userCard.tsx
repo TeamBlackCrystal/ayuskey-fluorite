@@ -1,18 +1,18 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, MouseEventHandler, useState } from "react";
 import { Avatar, Row, Col, Text, Button, Spacer, Grid, AvatarProps as TAvatarProps, CSS } from "@nextui-org/react";
-import { NoteUser, User, UserDetailed } from "@ayuskey/misskey.js/built/entities";
+import { NoteUser } from "@ayuskey/misskey.js/built/entities";
 import { useAyuskeyClient } from "../hooks/useAyuskeyClient";
 import { useQuery } from "react-query";
 
 interface Props {
   avatarProps?: TAvatarProps,
   css?: CSS,
-  onClick?: React.MouseEventHandler<unknown>,
+  onPress?: MouseEventHandler<unknown>,
   props?: any,
   user: NoteUser
 }
 
-export const UserTwitterCard: FC<Props> = ({avatarProps, css, onClick, props, user}) => {
+export const UserTwitterCard: FC<Props> = ({avatarProps, css, onPress, props, user}) => {
   const [following, setFollowing] = useState(false);
   const api = useAyuskeyClient()
   const {data, isLoading} = useQuery(`${user.id}Profile`, () => api.request("users/show", {username: user.username}))
@@ -28,7 +28,7 @@ export const UserTwitterCard: FC<Props> = ({avatarProps, css, onClick, props, us
         padding: "$sm",
         ...css,
       }}
-      onClick={onClick}
+      onPress={onPress}
       {...props}
     >
       <Row justify="space-between" align="center">
@@ -60,7 +60,7 @@ export const UserTwitterCard: FC<Props> = ({avatarProps, css, onClick, props, us
             <Button
               auto
               rounded
-              onClick={() => setFollowing(!following)}
+              onPress={() => setFollowing(!following)}
               css={{
                 maxHeight: "$space$12",
                 fs: "$xs",
