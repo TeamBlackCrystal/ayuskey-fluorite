@@ -6,6 +6,8 @@ specifiers:
   '@emotion/styled': ^11.10.0
   '@mui/material': ^5.10.1
   '@nextui-org/react': 1.0.0-beta.9
+  '@react-stately/collections': ^3.4.2
+  '@react-stately/menu': ^3.4.0
   '@types/crypto-js': ^4.1.1
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
@@ -36,6 +38,8 @@ dependencies:
   '@emotion/styled': 11.10.0_lzabd6uj4wst47copsenr4b56q
   '@mui/material': 5.10.1_sqzxty2p7kxc2tmue4tecplwku
   '@nextui-org/react': 1.0.0-beta.9_biqbaboplfbrettd7655fr4n2y
+  '@react-stately/collections': 3.4.2_react@18.2.0
+  '@react-stately/menu': 3.4.0_react@18.2.0
   '@types/crypto-js': 4.1.1
   '@types/react-router-dom': 5.3.3
   '@types/react-sound': 1.2.3
