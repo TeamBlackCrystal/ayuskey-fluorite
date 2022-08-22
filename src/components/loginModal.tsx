@@ -13,10 +13,12 @@ import { kinds } from "../models/permission";
 import { useLocalStorage } from "../store/auth";
 import { apiClient } from "strictcat";
 import { useSnackbar } from "notistack";
+import { strToBoolean } from "../utils/common";
+import { Schema } from "../models/api";
 
 export const LoginModal = () => {
 	const [visible, setVisible] = useState(false);
-	const [instance, setInstance] = useState("");
+	const [instance, setInstance] = useState(import.meta.env.VITE_INSTANCE_DOMAIN);
 	const [isLoading, setLoading] = useState(false);
 	const storage = useLocalStorage();
 	const handler = () => setVisible(true);
@@ -34,7 +36,7 @@ export const LoginModal = () => {
 			"/api/app/create",
 			{},
 			{
-				callbackUrl: "http://localhost:5173/cb",
+				callbackUrl: `${import.meta.env.VITE_FRONT_DOMAIN}/cb`,
 				description: "test",
 				name: "Ayuskey Fluorite",
 				permission: kinds,
@@ -45,8 +47,8 @@ export const LoginModal = () => {
       setLoading(false)
 			throw createApp.type, createApp.data;
 		}
-    storage.setHost(instance)
-		console.log(createApp.data.secret);
+    console.log(instance)
+    storage.setMainAccountHost(instance)
 		storage.add("_auth_secret", createApp.data.secret);
 		const generateSession = await api.call(
 			"POST",
@@ -59,8 +61,7 @@ export const LoginModal = () => {
       setLoading(false)
       throw generateSession.type, generateSession.data
     }
-    console.log(generateSession)
-
+    window.location.href = generateSession.data.url
 	};
 
 	return (
@@ -80,13 +81,15 @@ export const LoginModal = () => {
 				<Modal.Body>
 					<Input
           aria-label="インスタンス名"
-						clearable={true}
+						clearable={strToBoolean(import.meta.env.VITE_PRODUCTION) ? false : true}
 						bordered={true}
 						fullWidth={true}
+            disabled={strToBoolean(import.meta.env.VITE_PRODUCTION)}
+            value={instance}
 						color="primary"
 						size="lg"
 						onChange={(e) => setInstance(e.target.value)}
-						placeholder="Instance"
+						placeholder="https://kr.akirin.xyz"
 						contentLeft={<FaGlobe />}
 					/>
 				</Modal.Body>

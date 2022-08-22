@@ -1,16 +1,16 @@
 import create from "zustand"
 
 type TAuth = {
-  i: string | null
-  host: string
-  setHost: (newHost: string) => void
-  setI: (i: string) => void
+  setMainAccountHost: (newHost: string) => void
+  mainAccount: {host: string, i: string} | null
+  accounts: {host: string, i: string}[] | null
+  setMainAccountI: (i: string) => void
   add: (key:string, value: object | string) => void
 }
 
-export const getLocalStorage = <T> (key:string, defaultValue: T): string | T => {
+export const getLocalStorage = <T> (key:string, defaultValue: T, json: boolean = false): T => {
   const item  = window.localStorage.getItem(key)
-  return typeof item === 'string' ? item : defaultValue
+  return typeof item === 'string' ? (json ? JSON.parse(item) : item) : defaultValue
 }
 
 export const removeLocalStorage = (key:string): void => {
@@ -23,12 +23,12 @@ const setLocalStorage = (key:string, value: object | string): void => {
 }
 
 export const useLocalStorage = create<TAuth>((set)=> ({
-  i: getLocalStorage<null>("i", null),
-  host: getLocalStorage<string>("host", "kr.akirin.xyz"),
-  setHost(newHost: string) {
+  mainAccount: getLocalStorage<null | {host: string, i: string}>("_mainAccount", null, true),
+  accounts: getLocalStorage<null | {host: string, i: string}[]>("_accounts", null, true),
+  setMainAccountHost(newHost: string) {
       set((state) => {
-        setLocalStorage('host', newHost)
-        return {host: newHost}
+        setLocalStorage('_mainAccount', {host: newHost, i: state.mainAccount?.i || ''})
+        return {mainAccount: {host: newHost, i: state.mainAccount?.i || ''}}
       })
   },
   add(key, value) {
@@ -37,10 +37,11 @@ export const useLocalStorage = create<TAuth>((set)=> ({
         return {}
       })
   },
-  setI(i) {
-      set(() => {
-        setLocalStorage('i', i)
-        return {i: i}
+  setMainAccountI(i) {
+      set((state) => {
+        if (!state.mainAccount?.host) throw 'error'
+        setLocalStorage('_mainAccount', {host: state.mainAccount.host, i})
+        return {mainAccount: {host: state.mainAccount.host, i}}
       })
   },
 }))

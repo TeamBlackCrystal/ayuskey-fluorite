@@ -11,7 +11,7 @@ export const Router: FC = memo(() => {
   const storage = useLocalStorage()
     return (
         <Routes>
-            <Route path="/" element={storage.i && storage.host ? <Home />: <Welcome />} />
+            <Route path="/" element={storage.mainAccount && storage.mainAccount.i && storage.mainAccount.host ? <Home />: <Welcome />} />
             <Route path="/@:username" element={<UserProfile />} />
             <Route path="/cb" element={<CallBack />} />
         </Routes>

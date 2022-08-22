@@ -9,10 +9,11 @@ type AyuskeyApiOption = {
 
 
 export const useAyuskeyClient = (options?: AyuskeyApiOption) => {
-  const {host, i} = useLocalStorage.getState()
+  const {mainAccount} = useLocalStorage.getState()
+  if (!mainAccount) throw 'error'
   const opts = {
-    credential: options?.credential ? options.credential : i,
-    origin: options?.origin ? options.origin : `${host}`
+    credential: options?.credential ? options.credential : mainAccount.i,
+    origin: options?.origin ? options.origin : `${mainAccount.host}`
   }
   const client = useMemo(() => new api.APIClient(opts), [opts.origin, opts.credential])
   return client

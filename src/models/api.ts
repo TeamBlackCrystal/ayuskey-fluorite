@@ -1,4 +1,6 @@
-type Schema = {
+import type  {UserDetailed} from "@ayuskey/misskey.js/built/entities";
+
+export type Schema = {
 	resource: {
     "/api/auth/session/userkey": {
       POST: {
@@ -9,12 +11,20 @@ type Schema = {
         response: {accessToken: string}
       }
     },
+    "/api/i": {
+      POST: {
+        body: {
+          i: string
+        },
+        response: UserDetailed
+      }
+    }
     "/api/auth/session/generate": {
       POST: {
         body: {
           appSecret: string
         },
-        responce: {
+        response: {
           token: string
           url: string
         }
