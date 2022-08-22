@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import { Route, Routes } from "react-router-dom";
+import { CallBack } from "./pages/cb";
 import { Home } from "./pages/home";
 import { UserProfile } from "./pages/user/profile";
 import { Welcome } from "./pages/welcome";
@@ -12,6 +13,7 @@ export const Router: FC = memo(() => {
         <Routes>
             <Route path="/" element={storage.i && storage.host ? <Home />: <Welcome />} />
             <Route path="/@:username" element={<UserProfile />} />
+            <Route path="/cb" element={<CallBack />} />
         </Routes>
     )
 })
