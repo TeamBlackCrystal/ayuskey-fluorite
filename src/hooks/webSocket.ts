@@ -1,7 +1,7 @@
 
 import { Stream } from "@ayuskey/misskey.js";
 import { Note } from "@ayuskey/misskey.js/built/entities";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { onNote } from "../events/note";
 import { Timelines } from "../models/timeline";
 import { useNotes } from "../state/note";
@@ -10,7 +10,8 @@ import { useCurrentTimeline, useStream } from "../store/stream";
 import { useAyuskeyClient } from "./useAyuskeyClient";
 
 const storage = useLocalStorage.getState()
-const stream = new Stream(`https://${storage.host}`, {token: String(storage.i)})
+const stream = storage.host && storage.i ? new Stream(`https://${storage.host}`, {token: String(storage.i)}) : null
+
 
 const getTimelineEndpoint = (timeline: Timelines) => {
   switch (timeline) {
@@ -28,6 +29,7 @@ export const useStreaming = () => {
   const {currentTimeline} = useCurrentTimeline.getState()
   // const [stream, setStream] = useState<Stream | null>(null)
   useEffect(() => {
+    if (!stream) return
     const mainChannel = stream.useChannel('main')
     // setStream(stream)
   }, [storage.i])
@@ -41,6 +43,7 @@ export const useStreaming = () => {
     })
   }, [stream]);
   useEffect(() => {
+    if (!storage.i) return
     const currentE = getTimelineEndpoint(currentTimeline)
     if (currentE === null) return
     api.request(currentE).then((res) => {
