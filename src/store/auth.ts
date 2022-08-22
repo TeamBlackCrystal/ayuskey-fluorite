@@ -4,6 +4,8 @@ type TAuth = {
   i: string | null
   host: string
   setHost: (newHost: string) => void
+  setI: (i: string) => void
+  add: (key:string, value: object | string) => void
 }
 
 export const getLocalStorage = <T> (key:string, defaultValue: T): string | T => {
@@ -26,6 +28,18 @@ export const useLocalStorage = create<TAuth>((set)=> ({
       set((state) => {
         setLocalStorage('host', newHost)
         return {host: newHost}
+      })
+  },
+  add(key, value) {
+      set(() => {
+        setLocalStorage(key, value)
+        return {}
+      })
+  },
+  setI(i) {
+      set(() => {
+        setLocalStorage('i', i)
+        return {i: i}
       })
   },
 }))
