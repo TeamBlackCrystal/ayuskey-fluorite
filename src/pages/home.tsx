@@ -3,9 +3,7 @@ import newNoteSound from "../assets/sounds/syuilo/down.mp3";
 import { FC, useEffect, useState } from "react";
 import { Note } from "../components/note";
 import { useNotes } from "../state/note";
-import Sound from "react-sound";
 import useSound from "use-sound";
-import { useQuery } from "react-query";
 
 export const Home = () => {
 	const notes = useNotes();
@@ -50,7 +48,6 @@ export const Home = () => {
 		return (
 			<Card css={{ h: "$24", $$cardColor: "$colors$primary" }}>
 				<Card.Body>
-					{/* <Button onClick={() => console.log()}>aa</Button> */}
 					<Text h6={true} size={15} color="white" css={{ mt: 0 }}>{text}</Text>
 				</Card.Body>
 			</Card>

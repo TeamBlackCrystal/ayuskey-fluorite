@@ -11,6 +11,7 @@ type TAuth = {
 export const getLocalStorage = <T> (key:string, defaultValue: T): string | T => {
   const item  = window.localStorage.getItem(key)
   return typeof item === 'string' ? item : defaultValue
+}
 
 export const removeLocalStorage = (key:string): void => {
   window.localStorage.removeItem(key)
