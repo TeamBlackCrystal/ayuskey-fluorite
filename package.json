@@ -6,14 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "prepare": "yarn husky install",
+    "prepare": "pnpm husky install",
     "preview": "vite preview",
-    "format": "yarn rome format src",
-    "lint": "yarn rome check src"
+    "format": "pnpm rome format src",
+    "lint": "pnpm rome check src"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "yarn format"
+      "pnpm format"
     ]
   },
   "dependencies": {
@@ -22,8 +22,6 @@
     "@emotion/styled": "^11.10.0",
     "@mui/material": "^5.10.1",
     "@nextui-org/react": "1.0.0-beta.9",
-    "@react-stately/collections": "^3.4.2",
-    "@react-stately/menu": "^3.4.0",
     "@types/crypto-js": "^4.1.1",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-sound": "^1.2.3",
