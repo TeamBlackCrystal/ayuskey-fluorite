@@ -44,7 +44,7 @@ jobs:
 #            ${{ runner.os }}-yarn-
 
       - name: Install dependencies 👨🏻‍💻
-        run: pnpm
+        run: pnpm i
 
       - name: Run linter 👀
         run: pnpm lint
