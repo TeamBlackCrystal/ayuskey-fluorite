@@ -13,11 +13,16 @@ export const CallBack: FC = () => {
   removeLocalStorage("_auth_secret")
 
   useEffect(() => {
-    if (!(secret && token)) return
-    apiClient(`${storage.host}`).call("POST", "/api/auth/session/userkey", {}, {appSecret: secret, token: token}).then((res) => {
+    if (!(secret && token)) {window.location.href = '/'}
+
+    if (secret && token && storage.mainAccount) {
+      console.log(storage.mainAccount)
+    apiClient(`${storage.mainAccount.host}`).call("POST", "/api/auth/session/userkey", {}, {appSecret: secret, token: token}).then((res) => {
       if (res.type === 'failed') throw res.type, res.data
-      storage.setI(SHA256(res.data.accessToken+secret).toString())
+      storage.setMainAccountI(SHA256(res.data.accessToken+secret).toString())
+      window.location.href = '/'
     })
+  }
   }, [])
 
   return (
