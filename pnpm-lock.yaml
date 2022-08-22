@@ -9,6 +9,7 @@ specifiers:
   '@react-stately/collections': ^3.4.2
   '@react-stately/menu': ^3.4.0
   '@types/crypto-js': ^4.1.1
+  '@types/node': ^18.7.9
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@types/react-router-dom': ^5.3.3
@@ -57,6 +58,7 @@ dependencies:
   zustand: 4.1.1_react@18.2.0
 
 devDependencies:
+  '@types/node': 18.7.9
   '@types/react': 18.0.17
   '@types/react-dom': 18.0.6
   '@vitejs/plugin-react': 2.0.1_vite@3.0.9
@@ -1564,6 +1566,10 @@ packages:
   /@types/history/4.7.11:
     resolution: {integrity: sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==}
     dev: false
+
+  /@types/node/18.7.9:
+    resolution: {integrity: sha512-0N5Y1XAdcl865nDdjbO0m3T6FdmQ4ijE89/urOHLREyTXbpMWbSafx9y7XIsgWGtwUP2iYTinLyyW3FatAxBLQ==}
+    dev: true
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
