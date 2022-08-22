@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -7,12 +8,14 @@ export default defineConfig({
   build: {
     target: [
       'chrome100',
-      'firefox100'
+      'firefox100',
+      'es2017'
     ],
     manifest: 'manifest.json',
     rollupOptions: {
       input: {
-        app: './src/main.tsx'
+        // jsを指定するとhtmlが生成されない
+        app: resolve(__dirname, 'index.html')
       },
       output: {
         manualChunks: {
