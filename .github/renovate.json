@@ -9,7 +9,7 @@
 	"dependencyDashboard": false,
 	"automerge": false,
 	"branchConcurrentLimit": 0,
-	"labels": ["📦Dependencies"],
+	"labels": ["topic/Dependencies📦"],
 	"packageRules": [
 		{
 			"matchManagers": ["npm"],
