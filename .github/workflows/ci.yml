@@ -27,6 +27,9 @@ jobs:
           node-version: ${{ matrix.node }}
           check-latest: true
 
+      - name: setup PnpM
+        run: "npm i -g pnpm"
+
       - name: Get yarn cache directory path 🛠
         run: echo "INOP"
 #        id: yarn-cache-dir-path
