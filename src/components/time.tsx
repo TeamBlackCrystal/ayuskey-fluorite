@@ -26,8 +26,8 @@ export const Time: FC<Props> = memo(({originalTime, style}) => {
       ago >= 3600     ? '{}時間前'  .replace('{}', (~~(ago / 3600)).toString()) :
       ago >= 60       ? '{}分前'.replace('{}', (~~(ago / 60)).toString()) :
       ago >= 10       ? '{}秒前'.replace('{}', (~~(ago % 60)).toString()) :
-      ago >= -1       ? '{}たった今' :
-      ago <  -1       ? '{}未来' : '謎'
+      ago >= -1       ? 'たった今' :
+      ago <  -1       ? '未来' : '謎'
       setTime(newTime)
 
 
