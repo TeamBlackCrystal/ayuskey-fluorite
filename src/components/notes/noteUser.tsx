@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Image, Spacer, Text, Tooltip } from "@nextui-org/react";
 import { Note } from "@ayuskey/misskey.js/built/entities";
-import { Time } from "./time";
+import { Time } from "../time";
 import { FaGlobe, FaHome, FaUnlock } from "react-icons/fa";
 import {GiEarthAmerica} from "react-icons/gi"
 

@@ -1,48 +1,20 @@
 import { Grid, Card, Text, Loading } from "@nextui-org/react";
 import newNoteSound from "../assets/sounds/syuilo/down.mp3";
 import { FC, useEffect, useState } from "react";
-import { Note } from "../components/note";
+import { Note } from "../components/notes/note";
 import { useNotes } from "../state/note";
 import useSound from "use-sound";
+import { UserChnager } from "../components/notes/userChanger";
 
 export const Home = () => {
 	const notes = useNotes();
-	const [isTimeLineLoading, setTimeLineLoading] = useState(true);
-	const [play, { stop, pause }] = useSound(newNoteSound, {volume: 0.3});
+	const [isTimeLineLoading] = useState(true);
+	// const [play, { stop, pause }] = useSound(newNoteSound, {volume: 0.3});
+  console.log('home')
+	// useEffect(() => {
+	// 	play();
+	// }, [notes]);
 
-	// const _notes = useQuery("global-time-line", getGlobalTimeLine);
-	// useEffect(() => {
-	// 	if (_notes.data) {
-	// 		const __notes = _notes.data;
-	// 		__notes?.reverse().map((note) => {
-	// 			notes.addNote(note);
-	// 		});
-	// 	}
-	// }, [_notes.isLoading]);
-	useEffect(() => {
-		play();
-	}, [notes]);
-	// useEffect(() => {
-	// 	const init_ws = () =>
-	// 		setTimeout(() => {
-	// 			if (!ws.session.readyState) {
-	// 				init_ws();
-	// 			}
-	// 			setTimeLineLoading(false);
-	// 			console.log("きた");
-	// 			ws.session.send(
-	// 				`{"type": "connect","body": {"channel": "main","id": "${Math.random().toString(
-	// 					2,
-	// 				).substring(2, 8)}"}}`,
-	// 			);
-	// 			ws.session.send(
-	// 				`{"type": "connect","body": {"channel": "globalTimeline","id": ${Math.random().toString(
-	// 					2,
-	// 				).substring(2, 8)}}}`,
-	// 			);
-	// 		}, 1000);
-	// 	init_ws();
-	// }, []);
 
 	const MockItem: FC<{ text: string }> = ({ text }) => {
 		return (
@@ -69,12 +41,12 @@ export const Home = () => {
 									width: "100%",
 								}}
 							>
-								<Loading />
+                            {/* <UserChnager /> */}
 							</div>
 						)}
             {notes.notes.length === 0 && <Text>ここには何も無いようです</Text>}
 						{notes.notes.map(
-							(note) => <div style={{borderBottom: "solid black 1px"}}><Note note={note} isRenote={false} key={note.id} /></div>,
+							(note) => <div style={{borderBottom: "solid black 1px"}} key={note.id}><Note note={note} isRenote={false} key={note.id} /></div>,
 						)}
 					</Card.Body>
 				</Card>

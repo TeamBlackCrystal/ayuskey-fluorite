@@ -2,12 +2,12 @@ import { Note as NoteModel } from "@ayuskey/misskey.js/built/entities";
 import { Avatar, Button, Card, Collapse, Image, Text, Tooltip } from "@nextui-org/react";
 import { FC, memo, useState } from "react";
 import { FaReply } from "react-icons/fa";
-import { Reply } from "./note/reply";
+import { Reply } from "./reply";
 // import { MFM } from "./mfm";
 import { NoteUser } from "./noteUser";
-import { RenoteHeader } from "./renoteHeader";
-import { Time } from "./time";
-import { UserTwitterCard } from "./userCard";
+import { RenoteHeader } from "../renoteHeader";
+import { Time } from "../time";
+import { UserTwitterCard } from "../userCard";
 
 interface Props {
 	note: NoteModel;

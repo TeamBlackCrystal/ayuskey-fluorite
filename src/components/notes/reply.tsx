@@ -1,6 +1,6 @@
 import { Note as NoteModel  } from "@ayuskey/misskey.js/built/entities"
 import { FC } from "react"
-import { Note } from "../note"
+import { Note } from "./note"
 
 interface Props {
   note: NoteModel
