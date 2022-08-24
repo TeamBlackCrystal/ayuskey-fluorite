@@ -7,6 +7,10 @@ import { apiClient } from "strictcat";
 import { useSnackbar } from "notistack";
 import { strToBoolean } from "../utils/common";
 import { Schema } from "../models/api";
+import {
+	createMisskeyApp,
+	createMisskeySession,
+} from "../middlewares/thirdparty";
 
 interface Props {
 	visible: boolean;
@@ -23,7 +27,7 @@ export const LoginModal: FC<Props> = (
 	const [isLoading, setLoading] = useState(false);
 	const storage = useLocalStorage();
 	const handler = () => setVisible(true);
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 
 	const closeHandler = () => {
 		setVisible(false);
@@ -31,50 +35,26 @@ export const LoginModal: FC<Props> = (
 
 	const Login = async () => {
 		const api = apiClient<Schema>(`${instance}`);
-		const createApp = await api.call(
-			"POST",
-			"/api/app/create",
-			{},
-			{
-				callbackUrl: `${import.meta.env.VITE_FRONT_DOMAIN}/cb`,
-				description: "test",
-				name: "Ayuskey Fluorite",
-				permission: kinds,
-			},
-		);
-		if (createApp.type === "failed") {
+		const app = await createMisskeyApp(api);
+		if (app.type === "failed") {
 			enqueueSnackbar("失敗", {
 				variant: "error",
 				anchorOrigin: { horizontal: "left", vertical: "top" },
 			});
 			setLoading(false);
-			throw createApp.type, createApp.data;
+			throw app.type, app.data;
 		}
-		console.log(instance);
-		storage.add("_auth_secret", createApp.data.secret);
-		const generateSession = await api.call(
-			"POST",
-			"/api/auth/session/generate",
-			{},
-			{ appSecret: createApp.data.secret },
-		);
-
-		if (generateSession.type === "failed") {
+		storage.add("_auth_secret", app.data.secret);
+		const session = await createMisskeySession({
+			api,
+			secret: app.data.secret,
+		});
+		if (session.type === "failed") {
 			setLoading(false);
-			throw generateSession.type, generateSession.data;
+			throw session.type, session.data;
 		}
-		if (storage.accounts && storage.mainAccount) {
-			storage.accounts = [
-				...storage.accounts,
-				{ host: storage.mainAccount.host, i: storage.mainAccount.i },
-			];
-		} else if (storage.mainAccount) {
-			storage.accounts = [
-				{ host: storage.mainAccount.host, i: storage.mainAccount.i },
-			];
-		}
-		storage.setMainAccountHost(instance);
-		window.location.href = generateSession.data.url;
+    storage.add('_host', instance)
+		window.location.href = session.data.url;
 	};
 
 	return (
@@ -101,7 +81,7 @@ export const LoginModal: FC<Props> = (
 						}
 						bordered={true}
 						fullWidth={true}
-						disabled={strToBoolean(import.meta.env.VITE_PRODUCTION)}
+						disabled={true}
 						value={instance}
 						color="primary"
 						size="lg"

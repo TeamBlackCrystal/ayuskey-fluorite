@@ -8,7 +8,7 @@ export type Schema = {
           appSecret: string
           token: string
         }
-        response: {accessToken: string}
+        response: {accessToken: string, user: UserDetailed}
       }
     },
     "/api/i": {
