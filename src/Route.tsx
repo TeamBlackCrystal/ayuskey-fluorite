@@ -1,24 +1,26 @@
-import { UserDetailed } from "@ayuskey/misskey.js/built/entities";
-import { FC, memo, useEffect, useState } from "react";
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { PageTransition } from "./components/PageTransition";
-import { CallBack } from "./pages/cb";
-import { Home } from "./pages/home";
 import { UserProfile } from "./pages/user/profile";
-import { Welcome } from "./pages/welcome";
-import { useLogin } from "./hooks/useLogin";
-import { useAsync } from "react-async"
+import { useAuth } from "./store/auth";
+import { useSnapshot } from "valtio";
+import { Loading } from "./components/Loading";
 
+const Home = lazy(() => import("./pages/home"));
+const CallBack = lazy(() => import("./pages/cb"));
+const Welcome = lazy(() => import("./pages/welcome"));
 
-export const Router: FC = memo(() => {
-  const login = useAsync({promiseFn: useLogin})
-    return (
-      <PageTransition>
-        <Routes>
-            <Route path="/" element={login.data ? <Home />: <Welcome />} />
-            <Route path="/@:username" element={<UserProfile />} />
-            <Route path="/cb" element={<CallBack />} />
-        </Routes>
-        </PageTransition>
-    )
-})
+export default function Router() {
+	const { data: account } = useSnapshot(useAuth);
+	return (
+		<PageTransition>
+			<Suspense fallback={<Loading />}>
+				<Routes>
+					<Route path="/" element={account ? <Home /> : <Welcome />} />
+					<Route path="/@:username" element={<UserProfile />} />
+					<Route path="/cb" element={<CallBack />} />
+				</Routes>
+			</Suspense>
+		</PageTransition>
+	);
+}

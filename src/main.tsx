@@ -1,4 +1,3 @@
-import { createContext, StrictMode, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 
 // import "./index.css";
@@ -11,16 +10,11 @@ import { App } from "./App";
 
 const queryClient = new QueryClient();
 
-
-
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	// <StrictMode>
-  <QueryClientProvider client={queryClient}>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-      <ReactQueryDevtools/>
-
-      </QueryClientProvider>
-	// </StrictMode>,
+	<QueryClientProvider client={queryClient}>
+		<BrowserRouter><App /></BrowserRouter>
+		<ReactQueryDevtools />
+	</QueryClientProvider>,
+// </StrictMode>,
 );

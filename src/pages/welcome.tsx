@@ -1,12 +1,9 @@
-import { Loading } from "@nextui-org/react";
 import { motion, useAnimation } from "framer-motion";
-import { useQuery } from "react-query";
 import { LoginModal } from "../components/loginModal";
-import { useAyuskeyClient } from "../hooks/useAyuskeyClient";
 import misskeyIcon from "../assets/svg/misskey.svg";
 import { useState } from "react";
 
-export const Welcome = () => {
+const Welcome = () => {
 	const [visible, setVisible] = useState(false);
 	const divAnimationControls = useAnimation();
 	return (
@@ -215,3 +212,5 @@ export const Welcome = () => {
 		</div>
 	);
 };
+
+export default Welcome

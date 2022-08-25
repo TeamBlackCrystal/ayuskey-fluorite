@@ -6,7 +6,7 @@ import { useNotes } from "../state/note";
 import useSound from "use-sound";
 import { UserChnager } from "../components/notes/userChanger";
 
-export const Home = () => {
+const Home = () => {
 	const notes = useNotes();
 	const [isTimeLineLoading] = useState(true);
 	// const [play, { stop, pause }] = useSound(newNoteSound, {volume: 0.3});
@@ -55,3 +55,5 @@ export const Home = () => {
 		</Grid.Container>
 	);
 };
+
+export default Home
