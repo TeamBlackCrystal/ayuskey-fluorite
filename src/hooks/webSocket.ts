@@ -10,6 +10,7 @@ import { useAyuskeyClient } from "./useAyuskeyClient";
 import { useLogin } from "./useLogin";
 import { useAsync } from "react-async"
 import { useSession } from "../store/session";
+import { useSnapshot } from 'valtio'
 
 const getTimelineEndpoint = (timeline: Timelines) => {
 	switch (timeline) {
@@ -32,21 +33,23 @@ export const useStreaming = () => {
 	const stream = login.data ? new Stream(`${storage.host}`, {
 		token: String(login.data?.token),
 	}) : null;
+  const {currentTimeline} = useSnapshot(useStream)
 	const api = useAyuskeyClient();
 	useEffect(() => {
 		if (!stream) return;
 		const mainChannel = stream.useChannel("main");
-		// setStream(stream)
-	}, []);
+    // mainChannel.on('', (notification) => {
 
+    // })
+	}, []);
 	useEffect(() => {
 		if (!stream) return;
 		useStream.stream = stream;
-		const homeTimeLine = stream.useChannel("homeTimeline");
+		const homeTimeLine = stream.useChannel(currentTimeline);
 		homeTimeLine.on("note", (note: Note) => {
 			onNote(note);
 		});
-	}, [stream]);
+	}, [stream, currentTimeline]);
 	useEffect(() => {
 		if (!login.data) return;
 		const currentE = getTimelineEndpoint(useStream.currentTimeline);
