@@ -44,9 +44,9 @@ export const Time: FC<Props> = memo(({originalTime, style}) => {
 
 
   return (
-    <div style={style}>
-    <span>{time}</span>
-    </div>
+    <time style={style}>
+    {time}
+    </time>
   )
 }
 )
