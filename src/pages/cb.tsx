@@ -11,7 +11,7 @@ import {
 } from "../store/auth";
 import { db } from "../store/db";
 
-export const CallBack: FC = () => {
+const CallBack: FC = () => {
 	const search = useLocation().search;
 	const query = new URLSearchParams(search);
 	const token = query.get("token");
@@ -48,3 +48,5 @@ export const CallBack: FC = () => {
 
 	return <div></div>;
 };
+
+export default CallBack
