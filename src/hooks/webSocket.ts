@@ -5,10 +5,11 @@ import { onNote } from "../events/note";
 import { Timelines } from "../models/timeline";
 import { useNotes } from "../state/note";
 import { useLocalStorage } from "../store/auth";
-import { useCurrentTimeline, useStream } from "../store/stream";
+import { useStream } from "../store/stream";
 import { useAyuskeyClient } from "./useAyuskeyClient";
 import { useLogin } from "./useLogin";
 import { useAsync } from "react-async"
+import { useSession } from "../store/session";
 
 const getTimelineEndpoint = (timeline: Timelines) => {
 	switch (timeline) {
@@ -32,8 +33,6 @@ export const useStreaming = () => {
 		token: String(login.data?.token),
 	}) : null;
 	const api = useAyuskeyClient();
-	const { currentTimeline } = useCurrentTimeline.getState();
-	// const [stream, setStream] = useState<Stream | null>(null)
 	useEffect(() => {
 		if (!stream) return;
 		const mainChannel = stream.useChannel("main");
@@ -50,13 +49,16 @@ export const useStreaming = () => {
 	}, [stream]);
 	useEffect(() => {
 		if (!login.data) return;
-		const currentE = getTimelineEndpoint(currentTimeline);
+		const currentE = getTimelineEndpoint(useStream.currentTimeline);
 		if (currentE === null) return;
 		api.request(currentE).then((res) => {
 			res.reverse().map((note) => {
-				useNotes.getState().addNote(note);
+				useNotes.addNote(note);
 			});
 		});
-	}, [api, stream, currentTimeline]);
+    api.request('meta').then((res) => {
+      useSession.meta = res
+    })
+	}, [api, stream, useStream.currentTimeline]);
 	return stream;
 };
