@@ -42,7 +42,7 @@ export const useStreaming = () => {
 
 	useEffect(() => {
 		if (!stream) return;
-		useStream.getState().setStream(stream);
+		useStream.stream = stream;
 		const homeTimeLine = stream.useChannel("homeTimeline");
 		homeTimeLine.on("note", (note: Note) => {
 			onNote(note);

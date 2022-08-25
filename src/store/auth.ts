@@ -1,8 +1,8 @@
 import { UserDetailed } from "@ayuskey/misskey.js/built/entities";
 import create from "zustand";
 import { useLogin } from "../hooks/useLogin";
-import { getAccount } from "../middlewares/auth";
-import { TAccount } from "./db";
+import { proxy } from 'valtio'
+
 
 type TAuth = {
   host: string
@@ -31,6 +31,7 @@ const setLocalStorage = (key: string, value: object | string): void => {
 	window.localStorage.setItem(key, _value);
 };
 
+export const useAuth = proxy({data: useLogin().then((res) => res)})
 export const useLocalStorage = create<TAuth>(
 	(set) => ({
     host: import.meta.env.VITE_INSTANCE_DOMAIN,

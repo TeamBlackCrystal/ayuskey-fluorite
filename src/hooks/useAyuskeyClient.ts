@@ -1,9 +1,7 @@
 import { api } from "@ayuskey/misskey.js";
-import { useEffect, useMemo, useState } from "react";
-import { useLocalStorage } from "../store/auth";
-import { TAccount } from "../store/db";
-import { useLogin } from "./useLogin";
-import { useAsync } from "react-async"
+import { useMemo } from "react";
+import { useAuth, useLocalStorage } from "../store/auth";
+import { useSnapshot } from "valtio";
 
 type AyuskeyApiOption = {
 	origin: api.APIClient["origin"];
@@ -11,10 +9,10 @@ type AyuskeyApiOption = {
 };
 
 export const useAyuskeyClient = (options?: AyuskeyApiOption) => {
-  const storage = useLocalStorage.getState()
-  const login = useAsync({promiseFn: useLogin})
-  const opts = {
-		credential: options?.credential ? options.credential : login.data?.token,
+	const storage = useLocalStorage.getState();
+	const { data: account } = useSnapshot(useAuth);
+	const opts = {
+		credential: options?.credential ? options.credential : account?.token,
 		origin: options?.origin ? options.origin : `${storage.host}`,
 	};
 	const client = useMemo(() => new api.APIClient(opts), [

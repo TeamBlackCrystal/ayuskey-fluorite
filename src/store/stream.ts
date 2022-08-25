@@ -1,23 +1,12 @@
 import { Stream } from "@ayuskey/misskey.js";
 import create from "zustand";
 import { Timelines } from "../models/timeline";
-import { useLocalStorage } from "./auth";
-
+import {proxy} from "valtio"
 type TCommon = {
 	stream: Stream | null;
-	setStream: (stream: Stream) => void;
 };
-const storage = useLocalStorage.getState();
-export const useStream = create<TCommon>(
-	(set) => ({
-		stream: null,
-		setStream(stream) {
-			set((state) => {
-				return { stream: stream };
-			});
-		},
-	}),
-);
+
+export const useStream = proxy<TCommon>({stream: null})
 
 type TCurrentTimeline = {
 	currentTimeline: Timelines
