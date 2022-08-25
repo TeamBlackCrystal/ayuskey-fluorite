@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "bp": "tsc && vite build && vite preview",
     "prepare": "pnpm husky install",
     "preview": "vite preview",
     "format": "pnpm rome format src",
