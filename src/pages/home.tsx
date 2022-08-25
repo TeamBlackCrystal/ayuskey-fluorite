@@ -11,13 +11,13 @@ import { useSnapshot } from "valtio";
 const Home = () => {
 	const [isTimeLineLoading] = useState(true);
 	const onKeyPress = (event: any) => {
-		if (event.key === "n") {
+		if (event.key === "n" || "p") {
 			useCreateNoteModal.isOpen = true;
 		}
 	};
 
 	const { notes } = useSnapshot(useNotes) as typeof useNotes
-	useKeyPress(["n"], onKeyPress);
+	useKeyPress(["n", "p"], onKeyPress);
 	// const [play, { stop, pause }] = useSound(newNoteSound, {volume: 0.3});
 	console.log("home");
 	// useEffect(() => {
