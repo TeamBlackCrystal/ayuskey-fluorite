@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useQuery } from "react-query";
 import { api } from "../../utils/api";
 
@@ -6,15 +6,11 @@ interface Props {
 	url: string;
 }
 
-const UrlPreview: FC<Props> = ({ url }) => {
+const UrlPreview: FC<Props> = memo(({ url }) => {
 	const { isLoading, data: res } = useQuery(
 		url,
 		() => api.call("GET", "/url", { query: { url: url } }),
 	);
-  console.log(isLoading, res?.data)
-  if (!isLoading && res?.type=== 'succeeded') {
-  console.log(res?.data.thumbnail)
-  }
 	return (
 		<>
 		{!isLoading &&
@@ -65,6 +61,6 @@ const UrlPreview: FC<Props> = ({ url }) => {
 			)}
 		</>
 	);
-};
+});
 
 export default UrlPreview;

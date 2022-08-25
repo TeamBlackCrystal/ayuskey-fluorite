@@ -28,7 +28,6 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
       }
     }
     case "emojiCode": {
-      console.log(tree.props.name, emojis)
       return <Emoji emoji={`:${tree.props.name}:`} customEmojis={emojis}/>
     }
 

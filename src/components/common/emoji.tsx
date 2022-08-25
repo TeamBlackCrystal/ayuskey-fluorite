@@ -29,6 +29,5 @@ export const CustomEmoji: FC<Props> = ({emoji, customEmojis, normal}) => {
 }
 
 export const Emoji: FC<Props> = (p) => {
-  console.log(p.emoji)
   return p.emoji.startsWith(':') ? <CustomEmoji {...p} /> : <></>
 }
