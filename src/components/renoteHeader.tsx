@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Avatar, Text } from "@nextui-org/react";
-import { Note } from "@ayuskey/misskey.js/built/entities";
+import { Note } from "ayuskey.js/built/entities";
 
 interface Props {
 	note: Note;

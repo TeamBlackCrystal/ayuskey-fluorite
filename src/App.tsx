@@ -1,4 +1,4 @@
-import { Stream } from "@ayuskey/misskey.js";
+import { Stream } from "ayuskey.js";
 import { NextUIProvider } from "@nextui-org/react";
 import { SnackbarProvider } from "notistack";
 import { createContext, lazy, Suspense } from "react";

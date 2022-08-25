@@ -1,4 +1,4 @@
-import type  {UserDetailed} from "@ayuskey/misskey.js/built/entities";
+import type  {UserDetailed} from "ayuskey.js/built/entities";
 
 export type Schema = {
 	resource: {

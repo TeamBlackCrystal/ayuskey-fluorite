@@ -1,4 +1,4 @@
-import { UserDetailed } from "@ayuskey/misskey.js/built/entities";
+import { UserDetailed } from "ayuskey.js/built/entities";
 import create from "zustand";
 import { useLogin } from "../hooks/useLogin";
 import { proxy } from 'valtio'

@@ -1,4 +1,4 @@
-import { api } from "@ayuskey/misskey.js";
+import { api } from "ayuskey.js";
 import { useMemo } from "react";
 import { useAuth, useLocalStorage } from "../store/auth";
 import { useSnapshot } from "valtio";

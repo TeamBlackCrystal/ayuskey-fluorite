@@ -1,4 +1,4 @@
-import { UserDetailed } from "@ayuskey/misskey.js/built/entities";
+import { UserDetailed } from "ayuskey.js/built/entities";
 import { getAccount } from "../middlewares/auth";
 import { getLocalStorage } from "../store/auth";
 

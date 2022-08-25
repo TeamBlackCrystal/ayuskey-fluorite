@@ -1,5 +1,5 @@
-import { Stream } from "@ayuskey/misskey.js";
-import { Note } from "@ayuskey/misskey.js/built/entities";
+import { Stream } from "ayuskey.js";
+import { Note } from "ayuskey.js/built/entities";
 import { useEffect } from "react";
 import { onNote } from "../events/note";
 import { Timelines } from "../models/timeline";

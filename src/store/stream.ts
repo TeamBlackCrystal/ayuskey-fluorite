@@ -1,4 +1,4 @@
-import { Stream } from "@ayuskey/misskey.js";
+import { Stream } from "ayuskey.js";
 import create from "zustand";
 import { Timelines } from "../models/timeline";
 import {proxy} from "valtio"

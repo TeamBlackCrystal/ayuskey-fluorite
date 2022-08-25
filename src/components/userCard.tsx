@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler, useState } from "react";
 import { Avatar, Row, Col, Text, Button, Spacer, Grid, AvatarProps as TAvatarProps, CSS } from "@nextui-org/react";
-import { NoteUser } from "@ayuskey/misskey.js/built/entities";
+import { NoteUser } from "ayuskey.js/built/entities";
 import { useAyuskeyClient } from "../hooks/useAyuskeyClient";
 import { useQuery } from "react-query";
 
