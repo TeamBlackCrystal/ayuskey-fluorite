@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import { useQuery } from "react-query";
+import { theme } from "../../theme";
 import { api } from "../../utils/api";
 
 interface Props {
@@ -45,15 +46,15 @@ const UrlPreview: FC<Props> = memo(({ url }) => {
 							}}
 						/>
             <article style={{left: "100px", width: "calc(100% - 100px)", position: "relative", boxSizing: "border-box", padding: "16px"}}>
-              <header style={{marginBottom: "8px"}}>
+              <header style={{marginBottom: "8px", color: theme.text}}>
                 {res.data.title}
               </header>
-              <p style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis"}}>
+              <p style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", color: theme.text}}>
                 {res.data.description}
               </p>
               <footer style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", marginTop: "8px", height: "16px"}}>
                 <img src={res.data.icon} className="icon" style={{display: "inline-block", width: "16px", height: "16px", marginRight: "4px", verticalAlign: "top"}}/>
-                <p style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis"}}>{res.data.url}</p>
+                <p style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", color: theme.text}}>{res.data.url}</p>
               </footer>
             </article>
 					</a>
