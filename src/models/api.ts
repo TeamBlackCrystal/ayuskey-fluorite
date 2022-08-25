@@ -2,6 +2,27 @@ import type  {UserDetailed} from "ayuskey.js/built/entities";
 
 export type Schema = {
 	resource: {
+    "/url": {
+      GET: {
+        query: {
+          url: string
+        }
+        response: {
+          description: string
+          icon: string
+          sensitive: boolean
+          player: {
+            height: null
+            url: null
+            width: null
+          }
+          sitename: string
+          thumbnail: string
+          title: string
+          url: string
+        }
+      }
+    },
     "/api/auth/session/userkey": {
       POST: {
         body: {
