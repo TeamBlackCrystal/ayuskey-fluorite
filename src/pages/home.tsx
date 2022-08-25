@@ -16,7 +16,7 @@ const Home = () => {
 		}
 	};
 
-	const { notes } = useSnapshot(useNotes);
+	const { notes } = useSnapshot(useNotes) as typeof useNotes
 	useKeyPress(["n"], onKeyPress);
 	// const [play, { stop, pause }] = useSound(newNoteSound, {volume: 0.3});
 	console.log("home");
