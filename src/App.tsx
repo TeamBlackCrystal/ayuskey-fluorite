@@ -4,6 +4,8 @@ import { SnackbarProvider } from "notistack";
 import { createContext, lazy, Suspense } from "react";
 import { Loading } from "./components/Loading";
 import { useStreaming } from "./hooks/webSocket";
+import { theme } from "./theme";
+import './assets/css/common.css'
 const Router = lazy(() => import('./Route'));
 export const streamingContext = createContext<Stream | null>(null);
 
@@ -14,7 +16,7 @@ export const App = () => {
 		<streamingContext.Provider value={stream}>
 			<SnackbarProvider maxSnack={3}>
 				<NextUIProvider>
-					<div style={{ width: "100vw", height: "100vh" }}>
+					<div style={{ backgroundColor: theme.props.bg }}>
 						<Suspense fallback={<Loading />}><Router /></Suspense>
 					</div>
 				</NextUIProvider>
