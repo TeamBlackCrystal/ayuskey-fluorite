@@ -7,7 +7,7 @@ import { Reply } from "./reply";
 import { NoteUser } from "./noteUser";
 import { RenoteHeader } from "../renoteHeader";
 import { Time } from "../time";
-import { UserTwitterCard } from "../userCard";
+import { UserCard } from "../userCard";
 
 interface Props {
 	note: NoteModel;
@@ -32,7 +32,14 @@ export const Note: FC<Props> = memo(({ note, isRenote }) => {
 						height: "100%",
 					}}
 				>
-					{!note.renote && <Tooltip content={< UserTwitterCard user={note.user}/>}> <Avatar src={note.user.avatarUrl}/></Tooltip>}
+					{!note.renote && (
+						<Tooltip content={<UserCard user={note.user} />}>
+							<Avatar
+								src={note.user.avatarUrl}
+								alt={`${note.user.username}_${note.user.instance?.host}`}
+							/>
+						</Tooltip>
+					)}
 				</div>
 				{<div style={{ width: "100%" }}>
 					{!note.renote && <NoteUser note={note} />}

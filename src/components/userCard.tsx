@@ -12,18 +12,17 @@ interface Props {
   user: NoteUser
 }
 
-export const UserTwitterCard: FC<Props> = ({avatarProps, css, onPress, props, user}) => {
+export const UserCard: FC<Props> = ({avatarProps, css, onPress, props, user}) => {
   const [following, setFollowing] = useState(false);
   const api = useAyuskeyClient()
   const {data, isLoading} = useQuery(`${user.id}Profile`, () => api.request("users/show", {userId: user.id}))
-
 
 
   return (
     <Grid.Container
       className="user-twitter-card__container"
       css={{
-        mw: "250px",
+        mw: "450px",
         borderRadius: "$lg",
         padding: "$sm",
         ...css,
