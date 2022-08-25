@@ -9,7 +9,7 @@ type AyuskeyApiOption = {
 };
 
 export const useAyuskeyClient = (options?: AyuskeyApiOption) => {
-	const storage = useLocalStorage.getState();
+	const storage = useLocalStorage;
 	const { data: account } = useSnapshot(useAuth);
 	const opts = {
 		credential: options?.credential ? options.credential : account?.token,
