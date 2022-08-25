@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	// <StrictMode>
 	<QueryClientProvider client={queryClient}>
-		<BrowserRouter><App /></BrowserRouter>
+		<BrowserRouter basename={import.meta.env.VITE_FRONT_RELATIVE_PATH}><App /></BrowserRouter>
 		<ReactQueryDevtools />
 	</QueryClientProvider>,
 // </StrictMode>,
