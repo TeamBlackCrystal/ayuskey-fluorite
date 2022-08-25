@@ -1,9 +1,14 @@
 import { User } from "ayuskey.js/built/entities";
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import { MFM } from "../../utils/mfm";
 
-export const UserName: FC<{user: User}> = ({user}) => {
+interface Props {
+  style?: CSSProperties
+  user: User
+}
+
+export const UserName: FC<Props> = ({user, style}) => {
   return (
-    <MFM text={user.name || user.username} plain={true} emojis={user.emojis}/>
+    <MFM text={user.name || user.username} plain={true} emojis={user.emojis} style={style}/>
   )
 }
