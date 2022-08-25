@@ -27,7 +27,7 @@ const getTimelineEndpoint = (timeline: Timelines) => {
 };
 
 export const useStreaming = () => {
-	const storage = useLocalStorage();
+	const storage = useLocalStorage;
   const login = useAsync({promiseFn: useLogin})
 	const stream = login.data ? new Stream(`${storage.host}`, {
 		token: String(login.data?.token),
