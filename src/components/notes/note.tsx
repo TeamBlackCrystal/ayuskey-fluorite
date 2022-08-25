@@ -1,12 +1,9 @@
 import { Note as NoteModel } from "@ayuskey/misskey.js/built/entities";
-import { Avatar, Button, Card, Collapse, Image, Text, Tooltip } from "@nextui-org/react";
+import { Avatar, Button, Image, Text, Tooltip } from "@nextui-org/react";
 import { FC, memo, useState } from "react";
 import { FaReply } from "react-icons/fa";
-import { Reply } from "./reply";
-// import { MFM } from "./mfm";
 import { NoteUser } from "./noteUser";
 import { RenoteHeader } from "../renoteHeader";
-import { Time } from "../time";
 import { UserCard } from "../userCard";
 
 interface Props {
@@ -21,7 +18,7 @@ export const Note: FC<Props> = memo(({ note, isRenote }) => {
 		{note.reply && (
 			<Note note={note.reply} isRenote={note.renote ? true : false} />
 		)}
-		<div style={{margin: note.reply ? '8px' : 0}}>
+		<div style={{ margin: note.reply ? "8px" : 0 }}>
 			<RenoteHeader note={note} />
 			<div style={{ display: "flex", height: "100%" }}>
 				<div
@@ -58,10 +55,10 @@ export const Note: FC<Props> = memo(({ note, isRenote }) => {
 					{!note.cw &&
 						note.text &&
 						(
-              <div style={{display: "flex", alignItems: "center"}}>
-							<>{note.replyId && <FaReply style={{marginRight: "4px"}}/>}
-							<Text style={{ overflowWrap: "break-word" }}>{note.text}</Text></>
-              </div>
+							<div style={{ display: "flex", alignItems: "center" }}>
+								<>{note.replyId && <FaReply style={{ marginRight: "4px" }} />}
+								<Text style={{ overflowWrap: "break-word" }}>{note.text}</Text></>
+							</div>
 						)}
 					{note.renote && (
 						<Note note={note.renote} isRenote={true} key={note.renote.id} />
