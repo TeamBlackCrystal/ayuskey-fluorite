@@ -1,8 +1,7 @@
 import React, { FC, useState } from "react";
 import { Modal, Button, Text, Input, Loading } from "@nextui-org/react";
 import { FaGlobe } from "react-icons/fa";
-import { kinds } from "../models/permission";
-import { useLocalStorage } from "../store/auth";
+import { setLocalStorage, useLocalStorage } from "../store/auth";
 import { apiClient } from "strictcat";
 import { useSnackbar } from "notistack";
 import { strToBoolean } from "../utils/common";
@@ -25,7 +24,7 @@ export const LoginModal: FC<Props> = (
 		import.meta.env.VITE_INSTANCE_DOMAIN,
 	);
 	const [isLoading, setLoading] = useState(false);
-	const storage = useLocalStorage();
+	const storage = useLocalStorage;
 	const handler = () => setVisible(true);
 	const { enqueueSnackbar } = useSnackbar();
 
@@ -44,7 +43,7 @@ export const LoginModal: FC<Props> = (
 			setLoading(false);
 			throw app.type, app.data;
 		}
-		storage.add("_auth_secret", app.data.secret);
+		setLocalStorage("_auth_secret", app.data.secret);
 		const session = await createMisskeySession({
 			api,
 			secret: app.data.secret,
@@ -53,7 +52,7 @@ export const LoginModal: FC<Props> = (
 			setLoading(false);
 			throw session.type, session.data;
 		}
-    storage.add('_host', instance)
+    setLocalStorage('_host', instance)
 		window.location.href = session.data.url;
 	};
 

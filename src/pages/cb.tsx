@@ -17,7 +17,7 @@ const CallBack: FC = () => {
 	const token = query.get("token");
 	const secret = getLocalStorage("_auth_secret", null);
 
-	const storage = useLocalStorage();
+	const storage = useLocalStorage;
 	removeLocalStorage("_auth_secret");
 
 	useEffect(() => {

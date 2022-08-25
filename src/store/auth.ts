@@ -1,14 +1,11 @@
 import { UserDetailed } from "ayuskey.js/built/entities";
-import create from "zustand";
 import { useLogin } from "../hooks/useLogin";
-import { proxy } from 'valtio'
+import { proxy } from "valtio";
 
-
-type TAuth = {
-  host: string
+type TLocalStorage = {
+	host: string;
 	account: UserDetailed | null;
-	add: (key: string, value: object | string) => void;
-  setAccount: (user: UserDetailed) => void;
+	setAccount: (user: UserDetailed) => void;
 };
 
 export const getLocalStorage = <T>(
@@ -26,30 +23,16 @@ export const removeLocalStorage = (key: string): void => {
 	window.localStorage.removeItem(key);
 };
 
-const setLocalStorage = (key: string, value: object | string): void => {
+export const setLocalStorage = (key: string, value: object | string): void => {
 	const _value = typeof value === "object" ? JSON.stringify(value) : value;
 	window.localStorage.setItem(key, _value);
 };
 
-export const useAuth = proxy({data: useLogin().then((res) => res)})
-export const useLocalStorage = create<TAuth>(
-	(set) => ({
-    host: import.meta.env.VITE_INSTANCE_DOMAIN,
-		account: getLocalStorage<null | UserDetailed>(
-			"_account",
-			null,
-			true,
-		),
-    add(key, value) {
-        set(() => {
-          setLocalStorage(key, value)
-          return {}
-        })
-    },
-    setAccount(user: UserDetailed) {
-      set(() => {
-        setLocalStorage("_account", user)
-        return {account: user}
-      })
-    }
-  }))
+export const useAuth = proxy({ data: useLogin().then((res) => res) });
+export const useLocalStorage = proxy<TLocalStorage>({
+	host: import.meta.env.VITE_INSTANCE_DOMAIN,
+	account: getLocalStorage<null | UserDetailed>("_account", null, true),
+	setAccount: (user: UserDetailed) => {
+		setLocalStorage("_account", user);
+	},
+});
