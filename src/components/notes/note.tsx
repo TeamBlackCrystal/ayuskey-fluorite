@@ -218,7 +218,7 @@ export const Note: FC<Props> = ({ originalNote }) => {
 				<div className="body">
 					<div className="text">
 						<span style={{ whiteSpace: "pre-wrap" }}>
-							{note.text && <MFM text={note.text} />}
+							{note.text && <MFM text={note.text} style={{ color: theme.text }} emojis={note.emojis} />}
 							{urls && urls.map((url) => <UrlPreview url={url} />)}
 						</span>
 					</div>
