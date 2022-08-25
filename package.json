@@ -43,6 +43,7 @@
     "react-router-dom": "6",
     "strictcat": "^0.0.1-alpha.4",
     "use-sound": "^4.0.1",
+    "valtio": "^1.6.4",
     "zustand": "^4.1.0"
   },
   "devDependencies": {
