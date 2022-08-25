@@ -19,12 +19,12 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
         const res = [];
         for (const t of text.split('\n')) {
           res.push(<br />);
-          res.push(t);
+          res.push(<>{t}</>);
         }
         res.shift();
-        return res;
+        return <>{res}</>
       } else {
-        return [text.replace(/\n/g, ' ')];
+        return <>{text.replace(/\n/g, ' ')}</>;
       }
     }
     case "emojiCode": {
