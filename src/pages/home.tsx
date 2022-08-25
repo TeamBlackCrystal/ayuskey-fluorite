@@ -5,7 +5,7 @@ import { useNotes } from "../state/note";
 import { useKeyPress } from "../hooks/useKeyPress";
 import { CreateNoteModal } from "../components/notes/createNoteModal";
 import { useCreateNoteModal } from "../store/common";
-import { NewNote } from "../components/notes/newNote";
+import { Note } from "../components/notes/note";
 import { useSnapshot } from "valtio";
 
 const Home = () => {
@@ -62,7 +62,7 @@ const Home = () => {
 										key={note.id}
 									>
 										{/* <Note note={note} isRenote={false} key={note.id} /> */}
-										<NewNote originalNote={note} key={note.id} />
+										<Note originalNote={note} key={note.id} />
 									</div>
 								),
 							)}
