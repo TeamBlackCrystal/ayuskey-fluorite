@@ -7,10 +7,20 @@ import { extractUrlFromMfm, MFM } from "../../utils/mfm";
 import * as mfm from "mfm-js";
 import UrlPreview from "./urlPreview";
 import { UserName } from "../common/username";
-
+import { theme } from "../../theme";
+import { SpanText } from "../atoms/text";
+import style from "styled-components";
 interface Props {
 	originalNote: NoteModel;
 }
+
+const FooterButton = style.button`
+color: ${theme.text};
+margin-right: 28px;
+margin: 0;
+padding: 8px;
+opacity: .7;
+`;
 
 export const Note: FC<Props> = ({ originalNote }) => {
 	const note = originalNote?.renote ? originalNote.renote : originalNote;
@@ -41,9 +51,9 @@ export const Note: FC<Props> = ({ originalNote }) => {
 					}
 					style={{
 						flexShrink: 0,
-            position: "relative",
-            verticalAlign: "bottom",
-            lineHeight: "16px",
+						position: "relative",
+						verticalAlign: "bottom",
+						lineHeight: "16px",
 						display: "inline-block",
 						width: "28px",
 						height: "28px",
@@ -156,8 +166,9 @@ export const Note: FC<Props> = ({ originalNote }) => {
 								overflow: "hidden",
 								textDecoration: "ellipsis",
 							}}
-						>
-							<UserName user={note.user}/>
+						><SpanText>
+							<UserName user={note.user} />
+              </SpanText>
 						</span>
 					</a>
 					<div
@@ -170,15 +181,15 @@ export const Note: FC<Props> = ({ originalNote }) => {
 						}}
 					>
 						<span>
-							<span>@{note.user.username}</span>
-							{note.user.instance && <span>@{note.user.instance.host}</span>}
+							<SpanText>@{note.user.username}</SpanText>
+							{note.user.instance && <SpanText>@{note.user.instance.host}</SpanText>}
 						</span>
 					</div>
 					<div
 						className="info"
 						style={{ flexShrink: 0, marginLeft: "auto", fontSize: ".9em" }}
 					>
-						<Time originalTime={note.createdAt} />
+						<Time originalTime={note.createdAt} style={{ color: theme.text }} />
 					</div>
 				</header>
 				{note.user.instance && (
@@ -224,46 +235,10 @@ export const Note: FC<Props> = ({ originalNote }) => {
 					</div>
 				</div>
 				<footer>
-					<button
-						style={{
-							marginRight: "28px",
-							margin: 0,
-							padding: "8px",
-							opacity: ".7",
-						}}
-					>
-						<FaReply />
-					</button>
-					<button
-						style={{
-							marginRight: "28px",
-							margin: 0,
-							padding: "8px",
-							opacity: ".7",
-						}}
-					>
-						<FaRetweet />
-					</button>
-					<button
-						style={{
-							marginRight: "28px",
-							margin: 0,
-							padding: "8px",
-							opacity: ".7",
-						}}
-					>
-						<FaPlus />
-					</button>
-					<button
-						style={{
-							marginRight: "28px",
-							margin: 0,
-							padding: "8px",
-							opacity: ".7",
-						}}
-					>
-						<FaEllipsisH />
-					</button>
+					<FooterButton><FaReply /></FooterButton>
+					<FooterButton><FaRetweet /></FooterButton>
+					<FooterButton><FaPlus /></FooterButton>
+					<FooterButton><FaEllipsisH /></FooterButton>
 				</footer>
 			</div>
 		</article>
