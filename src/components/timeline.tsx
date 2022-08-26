@@ -2,10 +2,11 @@ import { FC } from "react";
 import { theme } from "../theme";
 import { Notes } from "./notes/notes";
 import style from "styled-components";
-import { FaComment, FaGlobe, FaHome, FaShare, FaShareAlt } from "react-icons/fa";
+import { FaComment, FaGlobe, FaHome, FaShareAlt } from "react-icons/fa";
 import { useStream } from "../store/stream";
-import { timelines, Timelines } from "../models/timeline";
+import { Timelines } from "../models/timeline";
 import { useNotes } from "../state/note";
+import { useSnapshot } from "valtio";
 
 const Base = style.div`
 display: flex;
