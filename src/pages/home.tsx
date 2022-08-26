@@ -6,6 +6,34 @@ import { CreateNoteModal } from "../components/notes/createNoteModal";
 import { useCreateNoteModal } from "../store/common";
 import { Notes } from "../components/notes/notes";
 import { Timeline } from "../components/timeline";
+import { theme } from "../theme";
+import style from "styled-components";
+import { Sidebar } from "../components/sidebar";
+
+
+
+const Contents = style.div`
+min-width: 0;
+min-height: 100vh;
+width: 750px;
+margin: 0 16px 0 0;
+background: ${theme.props.panel};
+border-left: solid 1px ${theme.props.divider};
+border-right: solid 1px ${theme.props.divider};
+border-radius: 0;
+overflow: clip;
+`;
+
+const Widgets = style.div`
+width: 300px;
+margin-top: 16px;
+`;
+
+const Columns = style.div`
+display: flex;
+justify-content: center;
+max-width: 100%;
+`;
 
 const Home = () => {
 	const onKeyPress = (event: any) => {
@@ -21,27 +49,13 @@ const Home = () => {
 	// 	play();
 	// }, [notes]);
 
-	const MockItem: FC<{ text: string }> = ({ text }) => {
-		return (
-			<Card css={{ h: "$24", $$cardColor: "$colors$primary" }}>
-				<Card.Body>
-					<Text h6={true} size={15} color="white" css={{ mt: 0 }}>{text}</Text>
-				</Card.Body>
-			</Card>
-		);
-	};
 	return (
-		<div>
-
+		<Columns>
 			<CreateNoteModal />
-			<Grid.Container gap={1} justify="center" style={{ width: "100%" }}>
-				<Grid xs={12} sm={2}><MockItem text="ウィジェット" /></Grid>
-				<Grid xs={12} sm={6}>
-					<Timeline />
-				</Grid>
-				<Grid xs={12} sm={2}><MockItem text="ウィジェット" /></Grid>
-			</Grid.Container>
-		</div>
+				<Sidebar />
+				<Contents><Timeline /></Contents>
+				<Widgets></Widgets>
+		</Columns>
 	);
 };
 
