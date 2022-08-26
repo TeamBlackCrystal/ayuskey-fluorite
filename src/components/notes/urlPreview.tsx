@@ -1,11 +1,48 @@
 import { FC, memo } from "react";
 import { useQuery } from "react-query";
+import styled from "styled-components";
+import { sp } from "../../media";
 import { theme } from "../../theme";
 import { api } from "../../utils/api";
 
 interface Props {
 	url: string;
 }
+
+const FlexDirection = styled.div`
+display: flex;
+flex-direction: row;
+${sp`
+flex-direction: column;
+`}
+`
+
+const Thumbnail = styled.div<{thumbnail: string}>`
+width: 100px;
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+background-image: url(${props => props.thumbnail});
+
+${sp`
+width: 100%;
+height: 108px;
+`}
+`
+
+const Article = styled.div`
+left: 100px;
+width: calc(100% - 100px);
+boxSizing: border-box;
+padding: 16px;
+flex: 50%;
+
+${sp`
+width: 100%;
+overflow-wrap: break-word:
+`}
+`
 
 const UrlPreview: FC<Props> = memo(({ url }) => {
 	const { isLoading, data: res } = useQuery(
@@ -18,34 +55,10 @@ const UrlPreview: FC<Props> = memo(({ url }) => {
 			res?.type === "succeeded" &&
 			(
 				<div style={{ marginTop: "8px" }}>
-					<a
-						href={url}
-						target="_blank"
-						style={{
-							position: "relative",
-							display: "block",
-							fontSize: "14px",
-							boxShadow: "0 0 0 1px rgb(255, 255, 255, 255, 0.1)",
-							borderRadius: "8px",
-							overflow: "hidden",
-						}}
-					>
-						<div
-							className="thumbnail"
-							style={{
-								position: "absolute",
-								width: "100px",
-								height: "100%",
-								backgroundPosition: "center",
-								backgroundSize: "cover",
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-                backgroundImage: `url(${res.data.thumbnail})`,
+          <FlexDirection>
+        <Thumbnail thumbnail={res.data.thumbnail}/>
 
-							}}
-						/>
-            <article style={{left: "100px", width: "calc(100% - 100px)", position: "relative", boxSizing: "border-box", padding: "16px"}}>
+            <Article>
               <header style={{marginBottom: "8px", color: theme.text}}>
                 {res.data.title}
               </header>
@@ -56,8 +69,8 @@ const UrlPreview: FC<Props> = memo(({ url }) => {
                 <img src={res.data.icon} className="icon" style={{display: "inline-block", width: "16px", height: "16px", marginRight: "4px", verticalAlign: "top"}}/>
                 <p style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", color: theme.text}}>{res.data.url}</p>
               </footer>
-            </article>
-					</a>
+            </Article>
+          </FlexDirection>
 				</div>
 			)}
 		</>
