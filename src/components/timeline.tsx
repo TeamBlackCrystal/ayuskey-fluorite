@@ -79,8 +79,10 @@ const TIMELINES = [
 ];
 
 export const Timeline: FC = () => {
+  const {currentTimeline} = useSnapshot(useStream)
   const {stream} = useStream
   const changeTimeline = (timeline: Timelines) => {
+    if (currentTimeline === timeline) return
     if (!stream) throw 'error'
     useNotes.notes = []
     useStream.currentTimeline = timeline
