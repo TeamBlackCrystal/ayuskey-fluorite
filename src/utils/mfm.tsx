@@ -1,7 +1,9 @@
 import { CustomEmojiLite } from "ayuskey.js/built/entities";
 import * as mfm from "mfm-js";
 import { CSSProperties, FC, useMemo } from "react";
+import { HashTag } from "../components/atoms/hashtag";
 import { Emoji } from "../components/common/emoji";
+import { useLocalStorage } from "../store/auth";
 interface TreeProps {
 	tree: mfm.MfmNode;
 	plain?: boolean;
@@ -29,6 +31,9 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
     }
     case "emojiCode": {
       return <Emoji emoji={`:${tree.props.name}:`} customEmojis={emojis}/>
+    }
+    case "hashtag": {
+      return <HashTag href={`${useLocalStorage.host}/tags/${tree.props.hashtag}`} target="_blank">#{tree.props.hashtag}</HashTag>
     }
 
 
