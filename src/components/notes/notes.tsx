@@ -1,23 +1,23 @@
-import { Card, Text } from "@nextui-org/react";
 import { FC } from "react";
 import { useNotes } from "../../state/note";
 import { useSnapshot } from "valtio";
 import { Note } from "./note";
-import { FaComment, FaGlobe, FaHome, FaShareAlt, FaShareAltSquare } from "react-icons/fa";
 import { theme } from "../../theme";
-import { useStream } from "../../store/stream";
-import styled from "styled-components";
-
-
+import { SpanText } from "../atoms/text";
+import { CircleSpinner } from "react-spinners-kit";
 
 export const Notes: FC = () => {
-	const { notes } = useSnapshot(useNotes) as typeof useNotes;
+	const { notes, fetchNote } = useSnapshot(useNotes) as typeof useNotes;
 
 	return (
-		<Card css={{ borderRadius: "3px", backgroundColor: theme.props.panel }}>
-
-			<Card.Body style={{ padding: "14px" }}>
-				{notes.length === 0 && <Text>ここには何も無いようです</Text>}
+		<div style={{ borderRadius: "3px", backgroundColor: theme.props.panel }}>
+			<div style={{ padding: "14px" }}>
+				{fetchNote && (
+					<div style={{ display: "flex", justifyContent: "center" }}>
+						<CircleSpinner />
+					</div>
+				)}
+				{notes.length === 0 && !fetchNote && <SpanText>ここには何も無いようです</SpanText>}
 				{notes.map(
 					(note) => (
 						<div style={{ borderBottom: "solid black 1px" }} key={note.id}>
@@ -26,7 +26,7 @@ export const Notes: FC = () => {
 						</div>
 					),
 				)}
-			</Card.Body>
-		</Card>
+			</div>
+		</div>
 	);
 };
