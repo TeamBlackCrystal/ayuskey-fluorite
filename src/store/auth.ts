@@ -13,8 +13,17 @@ export const getLocalStorage = <T>(
 	defaultValue: T,
 	json: boolean = false,
 ): T => {
-	const item = window.localStorage.getItem(key);
-	return typeof item === "string" ? (
+  const keys = key.split('/')
+  let item = null
+  if (keys.length === 1) item = window.localStorage.getItem(key)
+  if (keys.length > 1) {
+    const original = window.localStorage.getItem(keys[0])
+    if (!original) {
+      return defaultValue
+    }
+    item = JSON.parse(original)[keys[1]]
+  }
+	return item ? (
 		json ? JSON.parse(item) : item
 	) : defaultValue;
 };
