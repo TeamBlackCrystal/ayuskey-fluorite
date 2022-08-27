@@ -27,7 +27,7 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
         res.shift();
         return <>{res}</>
       } else {
-        return <>{text.replace(/\n/g, ' ')}</>;
+        return <>{text}</>;
       }
     }
     case "emojiCode": {
