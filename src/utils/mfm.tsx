@@ -44,6 +44,9 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
     case "unicodeEmoji": {
       return <Emoji emoji={tree.props.emoji} customEmojis={emojis} normal={plain} />
     }
+    case "mention": {
+      return <span>{tree.props.acct}</span>
+    }
     case "inlineCode": {
       return <Code code={tree.props.code} inline={true}/>
     }
