@@ -118,7 +118,7 @@ export const Note: FC<Props> = ({ originalNote }) => {
 					width: "58px",
 					height: "58px",
 					position: "sticky",
-					top: 0,
+					top: 55,
 					alignSelf: "flex-start",
 					left: 0,
 				}}
