@@ -1,6 +1,3 @@
-import { Grid, Card, Text } from "@nextui-org/react";
-import { FC } from "react";
-
 import { useKeyPress } from "../hooks/useKeyPress";
 import { CreateNoteModal } from "../components/notes/createNoteModal";
 import { useCreateNoteModal } from "../store/common";
@@ -10,31 +7,33 @@ import style from "styled-components";
 import { Sidebar } from "../components/sidebar";
 import { sp } from "../media";
 
-
-
 const Contents = style.div`
 min-width: 0;
 min-height: 100vh;
-width: auto;
+width: 100%;
 max-width: 750px;
 margin: 0 16px 0 0;
-background: ${theme.props.panel};
+background: ${theme.props.bg};
 border-left: solid 1px ${theme.props.divider};
 border-right: solid 1px ${theme.props.divider};
 border-radius: 0;
 overflow: clip;
 
-${sp`
+${
+	sp`
 margin: 0;
-`}
+`
+}
 `;
 
 const Widgets = style.div`
 width: 300px;
 margin-top: 16px;
-${sp`
+${
+	sp`
 display: none;
-`}
+`
+}
 `;
 
 const Columns = style.div`
@@ -60,9 +59,9 @@ const Home = () => {
 	return (
 		<Columns>
 			<CreateNoteModal />
-				<Sidebar />
-				<Contents><Timeline /></Contents>
-				<Widgets></Widgets>
+			<Sidebar />
+			<Contents><Timeline /></Contents>
+			<Widgets></Widgets>
 		</Columns>
 	);
 };
