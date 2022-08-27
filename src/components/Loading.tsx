@@ -1,6 +1,6 @@
-import { Image, Loading as NextUILoading } from "@nextui-org/react";
 import { FC } from "react";
-import ayuskeyIcon from "../assets/images/ayuskey.webp"
+import { ImpulseSpinner } from "react-spinners-kit";
+import ayuskeyIcon from "../assets/images/ayuskey.webp";
 
 export const Loading: FC = () => {
 	return (
@@ -14,14 +14,10 @@ export const Loading: FC = () => {
 			}}
 		>
 			<div style={{ textAlign: "center" }}>
-				<div>
-					<img
-						src={ayuskeyIcon}
-						alt="ayuskey"
-						height="70px"
-					/>
+				<div><img src={ayuskeyIcon} alt="ayuskey" height="70px" /></div>
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					<ImpulseSpinner />
 				</div>
-				<NextUILoading type="points-opacity" />
 			</div>
 		</div>
 	);
