@@ -54,10 +54,12 @@ export const useStreaming = () => {
 		if (!login.data) return;
 		const currentE = getTimelineEndpoint(useStream.currentTimeline);
 		if (currentE === null) return;
+    useNotes.changeFetchNode(true)
 		api.request(currentE).then((res) => {
 			res.reverse().map((note) => {
 				useNotes.addNote(note);
 			});
+      useNotes.changeFetchNode(false)
 		});
     api.request('meta').then((res) => {
       useSession.meta = res
