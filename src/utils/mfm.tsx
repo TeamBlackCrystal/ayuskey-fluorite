@@ -1,7 +1,9 @@
 import { CustomEmojiLite } from "ayuskey.js/built/entities";
 import * as mfm from "mfm-js";
 import { CSSProperties, FC, useMemo } from "react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import { HashTag } from "../components/atoms/hashtag";
+import { Link } from "../components/atoms/link";
 import { Emoji } from "../components/common/emoji";
 import { Code } from "../components/code";
 import { useLocalStorage } from "../store/auth";
@@ -14,7 +16,10 @@ interface TreeProps {
 const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
 	switch (tree.type) {
 		case "url": {
-			return <a href={tree.props.url} target="_blank">{tree.props.url}</a>;
+			return <Link href={tree.props.url} target="_blank">
+        {tree.props.url}
+        <FaExternalLinkAlt style={{fontSize: ".9em", paddingLeft: "2px"}}/>
+      </Link>;
 		}
     case "text": {
       const text = tree.props.text.replace(/(\r\n|\n|\r)/g, '\n')
