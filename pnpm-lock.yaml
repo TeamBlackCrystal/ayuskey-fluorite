@@ -34,6 +34,7 @@ specifiers:
   react-icons: ^4.4.0
   react-query: ^3.39.2
   react-router-dom: '6'
+  react-spinners-kit: github:barbalex/react-spinners-kit
   rome: 0.8.0-next.ff4153b
   strictcat: ^0.0.1-alpha.4
   styled-components: ^5.3.5
@@ -69,6 +70,7 @@ dependencies:
   react-icons: 4.4.0_react@18.2.0
   react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
+  react-spinners-kit: github.com/barbalex/react-spinners-kit/5f6a31b690bb9223c9ecf154831858d16f2e11c5_2qpntmkb2tecmgal3aq2m37jiu
   strictcat: 0.0.1-alpha.4
   styled-components: 5.3.5_biqbaboplfbrettd7655fr4n2y
   use-sound: 4.0.1_react@18.2.0
@@ -3357,3 +3359,20 @@ packages:
     resolution: {integrity: sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw==}
     engines: {node: '>= 14'}
     dev: true
+
+  github.com/barbalex/react-spinners-kit/5f6a31b690bb9223c9ecf154831858d16f2e11c5_2qpntmkb2tecmgal3aq2m37jiu:
+    resolution: {tarball: https://codeload.github.com/barbalex/react-spinners-kit/tar.gz/5f6a31b690bb9223c9ecf154831858d16f2e11c5}
+    id: github.com/barbalex/react-spinners-kit/5f6a31b690bb9223c9ecf154831858d16f2e11c5
+    name: react-spinners-kit
+    version: 1.9.1
+    peerDependencies:
+      polished: 1.x
+      prop-types: 15.x
+      react: '>=16.12.0 < 18.0.0'
+      react-dom: '>=16.12.0 < 18.0.0'
+      styled-components: 4.x
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      styled-components: 5.3.5_biqbaboplfbrettd7655fr4n2y
+    dev: false
