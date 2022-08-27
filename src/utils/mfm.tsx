@@ -3,6 +3,7 @@ import * as mfm from "mfm-js";
 import { CSSProperties, FC, useMemo } from "react";
 import { HashTag } from "../components/atoms/hashtag";
 import { Emoji } from "../components/common/emoji";
+import { Code } from "../components/code";
 import { useLocalStorage } from "../store/auth";
 interface TreeProps {
 	tree: mfm.MfmNode;
@@ -37,6 +38,13 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
     }
     case "unicodeEmoji": {
       return <Emoji emoji={tree.props.emoji} customEmojis={emojis} normal={plain} />
+    }
+    case "inlineCode": {
+      return <Code code={tree.props.code} inline={true}/>
+    }
+    case "blockCode": {
+      console.log(tree.props.lang, 'kore')
+      return <Code code={tree.props.code} inline={false} lang={tree.props.lang}/>
     }
 
 		default:
