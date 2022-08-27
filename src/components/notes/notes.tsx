@@ -8,24 +8,7 @@ import { theme } from "../../theme";
 import { useStream } from "../../store/stream";
 import styled from "styled-components";
 
-const TIMELINES = [
-	{
-		name: "homeTimeline",
-		element: <><FaHome />ホーム</>,
-	},
-	{
-		name: "localTimeline",
-		element: <><FaComment />ローカル</>,
-	},
-	{
-		name: "hybridTimeline",
-		element: <><FaShareAlt />ソーシャル</>,
-	},
-	{
-		name: "globalTimeline",
-		element: <><FaGlobe />グローバル</>,
-	},
-];
+
 
 export const Notes: FC = () => {
 	const { notes } = useSnapshot(useNotes) as typeof useNotes;
