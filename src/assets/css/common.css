@@ -1,3 +1,8 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
 ._button, ._borderButton, ._textButton, ._buttonPrimary, ._buttonGradate {
   appearance: none;
   display: inline-block;
