@@ -35,7 +35,9 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
     case "hashtag": {
       return <HashTag href={`${useLocalStorage.host}/tags/${tree.props.hashtag}`} target="_blank">#{tree.props.hashtag}</HashTag>
     }
-
+    case "unicodeEmoji": {
+      return <Emoji emoji={tree.props.emoji} customEmojis={emojis} normal={plain} />
+    }
 
 		default:
 			return <div className="text-red">謎 {tree.type}</div>;
