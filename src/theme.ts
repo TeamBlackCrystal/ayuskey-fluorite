@@ -8,6 +8,9 @@ export const useDarkTheme = proxy({
   secondary: '#272727',
   text: '#D5D5D6',
   props: {
+    hashtag: "#70c0e8",
+    link: "#e88080",
+    radius: "12px",
 		accent: '#63e2b7',
 		bg: '#101014',
 		fg: '#D5D5D6',
