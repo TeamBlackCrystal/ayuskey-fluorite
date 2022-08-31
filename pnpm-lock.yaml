@@ -27,6 +27,7 @@ specifiers:
   framer-motion: ^7.2.1
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-icons: ^4.4.0
   react-spinners-kit: github:barbalex/react-spinners-kit
   remix-auth: ^3.2.2
   remix-utils: ^3.3.0
@@ -53,6 +54,7 @@ dependencies:
   framer-motion: 7.2.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.4.0_react@18.2.0
   react-spinners-kit: github.com/barbalex/react-spinners-kit/5f6a31b690bb9223c9ecf154831858d16f2e11c5_2qpntmkb2tecmgal3aq2m37jiu
   remix-auth: 3.2.2_@remix-run+react@1.7.0
   remix-utils: 3.3.0_kapcisa4raxyuiy4xpybed3poe
@@ -6713,6 +6715,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+
+  /react-icons/4.4.0_react@18.2.0:
+    resolution: {integrity: sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
