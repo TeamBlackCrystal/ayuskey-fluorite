@@ -22,10 +22,14 @@
     "crypto-js": "^4.1.1",
     "dexie": "^3.2.2",
     "framer-motion": "^7.2.1",
+    "mfm-js": "^0.23.0",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-query": "^3.39.2",
     "react-spinners-kit": "github:barbalex/react-spinners-kit",
+    "react-syntax-highlighter": "^15.5.0",
     "remix-auth": "^3.2.2",
     "remix-utils": "^3.3.0",
     "strictcat": "0.0.1-alpha.4",
@@ -33,6 +37,7 @@
     "valtio": "^1.6.4"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.26.0",
     "@remix-run/dev": "^1.7.0",
     "@remix-run/eslint-config": "^1.7.0",
     "@types/crypto-js": "^4.1.1",
@@ -40,6 +45,7 @@
     "@types/node": "^18.7.14",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/react-syntax-highlighter": "^15.5.5",
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.20.0",
     "typescript": "^4.7.4"
