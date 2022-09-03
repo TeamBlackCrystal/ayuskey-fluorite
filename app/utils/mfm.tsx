@@ -21,7 +21,7 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
 	switch (tree.type) {
 		case "url": {
 			return (
-				<Link href={tree.props.url} target="_blank">
+				<Link type="link" href={tree.props.url} target="_blank">
 					{tree.props.url}
 					<FaExternalLinkAlt style={{ fontSize: ".9em", paddingLeft: "2px" }} />
 				</Link>
