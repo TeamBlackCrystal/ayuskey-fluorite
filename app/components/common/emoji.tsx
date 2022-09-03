@@ -36,7 +36,7 @@ export const CustomEmoji: FC<Props> = ({emoji, customEmojis, normal}) => {
   const emojis = [...(customEmojis ?? []), ...meta.emojis]
   const hitEmoji = emojis.find(e => e.name === emoji.substring(1, emoji.length - 1))
   if (hitEmoji) {
-    return <EmojiIMG src={hitEmoji.url} />
+    return <EmojiIMG src={hitEmoji.url} alt={hitEmoji.name}/>
   } else {
     return <span>{emoji}</span>
   }

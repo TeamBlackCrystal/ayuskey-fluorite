@@ -65,7 +65,7 @@ const UrlPreview: FC<Props> = memo(({ url }) => {
                 {res.data.description}
               </p>
               <footer style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", marginTop: "8px", height: "16px"}}>
-                <img src={res.data.icon} className="icon" style={{display: "inline-block", width: "16px", height: "16px", marginRight: "4px", verticalAlign: "top"}}/>
+                <img src={res.data.icon} alt='urlPreviewImage' className="icon" style={{display: "inline-block", width: "16px", height: "16px", marginRight: "4px", verticalAlign: "top"}}/>
                 <p style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", color: theme.text}}>{res.data.url}</p>
               </footer>
             </Article>

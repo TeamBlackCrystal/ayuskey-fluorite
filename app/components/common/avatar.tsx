@@ -33,7 +33,7 @@ height: 100%;
 export const Avatar: FC<Props> = ({user, style}) => {
   return (
     <AvatarContainer style={style}>
-      <AvatarInner src={user.avatarUrl}/>
+      <AvatarInner src={user.avatarUrl} alt={`${user.name}_Avatar`}/>
     </AvatarContainer>
   )
 }

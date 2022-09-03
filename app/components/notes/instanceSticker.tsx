@@ -27,6 +27,7 @@ export const InstanceSticker: FC<Props> = ({note}) => {
 					>
 						<img
 							src={note.user.instance.iconUrl}
+              alt={note.user.instance.name}
 							height="100%"
 							style={{
 								margin: "0px !important",
