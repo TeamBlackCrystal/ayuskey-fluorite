@@ -8,6 +8,7 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useCatch,
 	useLoaderData,
 } from "@remix-run/react";
 import type { Stream } from "ayuskey.js";
@@ -21,6 +22,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { useChangeLanguage } from "remix-i18next";
 import { useTranslation } from "react-i18next";
 import i18next from "./i18next.server";
+import { theme } from "./theme";
 
 export const meta: MetaFunction = () => ({
 	charset: "utf-8",
@@ -100,4 +102,25 @@ export default function App() {
 			</body>
 		</html>
 	);
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+  return (
+    <html>
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body style={{background: theme.props.bg, height: "100vh"}}>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100%"}}>
+        <h1 style={{color: theme.text}}>
+          {caught.status} {caught.statusText}
+        </h1>
+        </div>
+        <Scripts />
+      </body>
+    </html>
+  );
 }
