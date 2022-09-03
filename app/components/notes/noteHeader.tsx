@@ -72,7 +72,9 @@ export const NoteHeader: FC<Props> = ({ note }) => {
 				className="info"
 				style={{ flexShrink: 0, marginLeft: "auto", fontSize: ".9em" }}
 			>
-				<Time originalTime={note.createdAt} style={{ color: theme.text }} />
+				<Link href={`/notes/${note.id}`}>
+					<Time originalTime={note.createdAt} style={{ color: theme.text }} />
+				</Link>
 			</div>
 		</header>
 	);
