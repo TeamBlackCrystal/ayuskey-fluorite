@@ -11,7 +11,7 @@ import style from "styled-components";
 import { NoteHeader } from "./noteHeader";
 import { InstanceSticker } from "./instanceSticker";
 import { Avatar } from "../common/avatar";
-
+import { Time } from "../time";
 interface Props {
 	originalNote: NoteModel;
 }
@@ -107,6 +107,9 @@ export const Note: FC<Props> = ({ originalNote }) => {
 					</a>
 					がRenote
 				</span>
+        <div style={{marginLeft: 'auto', fontSize: '0.9em'}}>
+        <Time originalTime={originalNote.createdAt} style={{flexShrink: 0, color: 'inherit'}} />
+        </div>
 			</div>
 		)}
 		<article style={{ display: "flex", padding: "28px 32px 18px" }}>
