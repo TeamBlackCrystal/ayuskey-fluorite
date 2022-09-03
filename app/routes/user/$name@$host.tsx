@@ -1,19 +1,19 @@
-import type { LoaderFunction } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node"
-import { useParams } from "@remix-run/react"
-import { AyuskeyClient } from "~/hooks/useAyuskeyClient"
+import { useLoaderData } from "@remix-run/react"
+import { serverSideAPI } from "~/utils/api";
 
-export const loader: LoaderFunction = async ({params}) => {
+export async function loader({params}: LoaderArgs) {
     if (!params.name) throw 'name is not found'
-    const api = AyuskeyClient()
+    const api = serverSideAPI
     const user = await api.request('users/show', {username: params.name, host: params.host})
-    return json(params)
+    return json(user)
 }
 
 const UserProfile = () => {
-    const params = useParams()
+    const user = useLoaderData<typeof loader>()
     return (
-        <div>{params.name}@{params.host}</div>
+        <div>{user.name}@{user.host}</div>
     )
 }
 

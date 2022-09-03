@@ -1,31 +1,32 @@
-import type { LoaderFunction, MetaFunction } from "@remix-run/node"
+import { json, LoaderFunction, MetaFunction } from "@remix-run/node"
 import { useParams } from "@remix-run/react"
 import type { UserDetailed } from "ayuskey.js/built/entities"
-import { json } from "remix-utils"
-import { AyuskeyClient } from "~/hooks/useAyuskeyClient"
+import { serverSideAPI } from "~/utils/api"
+import { getUsername } from "~/utils/username"
 
 export const meta: MetaFunction = ({data}) => {
+
     if (!data) {
         return {
             title: "ユーザーが見つかりません"
         }
     }
-    const user = JSON.parse(data) as UserDetailed
-    console.log('ここ', user)
+    const user = data.user as UserDetailed
     return {
         title: user.name ? `${user.name} (@${user.username})` : `@${user.username}`,
-        description: user.description
+        description: user.description,
+        'og:title': `${getUsername(user)}`,
+        'og:description': user.description,
+        'og:image': `${user.avatarUrl}`,
+        'og:url': `${data.url}`
     }
 }
 
 
-export const loader: LoaderFunction = async ({params}) => {
-    console.log(params)
+export const loader: LoaderFunction = async ({params, request}) => {
     if (!params.name) throw new Error('NotFound User')
-    const api = AyuskeyClient()
-    const user = await api.request('users/show', {username: params.name})
-    console.log(user)
-    return json(user)
+    const user = await serverSideAPI.request('users/show', {username: params.name})
+    return json({user, url: request.url})
 }
 
 export const ErrorBoundary = ({error}: {error: Error}) => {
