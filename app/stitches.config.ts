@@ -26,6 +26,9 @@ export const {
       panelHeaderBg: '#18181c',
       gray400: 'gainsboro',
       gray500: 'lightgray',
+      infoWarnBg: '#42321c',
+      infoWarnFg: '#ffbd3e',
+      margin: '16px'
     },
   },
   media: {
