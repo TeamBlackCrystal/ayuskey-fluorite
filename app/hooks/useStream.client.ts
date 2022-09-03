@@ -1,6 +1,6 @@
 import { Stream } from "ayuskey.js";
 import type { Note } from "ayuskey.js/built/entities";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import type { Timelines } from "../models/timeline";
 import { useNote } from "../state/note";
 import { AyuskeyClient } from "./useAyuskeyClient";
@@ -8,7 +8,6 @@ import { useAuth } from "~/state/auth";
 import { useSession } from "~/state/session";
 import { useStream } from "~/state/stream";
 import { useSnapshot } from "valtio";
-import { useFetcher } from "@remix-run/react";
 import { useCommon } from "~/state/common";
 
 const getTimelineEndpoint = (timeline: Timelines) => {
@@ -31,7 +30,7 @@ export const useStreaming = () => {
 	const { currentTimeline } = useSnapshot(useStream);
 
 	//@ts-ignore
-	useCommon.host = JSON.parse(window.ENV).INSTANCE_URL;
+	useCommon.host = window.ENV.INSTANCE_URL;
 	const { host } = useSnapshot(useCommon);
 
 	const stream = useMemo(
