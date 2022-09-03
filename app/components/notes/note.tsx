@@ -12,6 +12,8 @@ import { NoteHeader } from "./noteHeader";
 import { InstanceSticker } from "./instanceSticker";
 import { Avatar } from "../common/avatar";
 import { Time } from "../time";
+import { Link } from "../common/link";
+import { Panel } from "../common/panel";
 interface Props {
 	originalNote: NoteModel;
 }
@@ -29,7 +31,7 @@ export const Note: FC<Props> = ({ originalNote }) => {
 	const urls = note.text ? extractUrlFromMfm(mfm.parse(note.text)) : null;
 
 	return (
-		<>
+		<Panel>
 		{originalNote.renote && (
 			<div
 				className="renote"
@@ -42,7 +44,7 @@ export const Note: FC<Props> = ({ originalNote }) => {
 					color: "rgb(99, 226, 183)",
 				}}
 			>
-				<a
+				<Link
 					href={
 						`/@${originalNote.user.username}` + (
 							originalNote.user.instance ? `@/${originalNote.user.instance
@@ -75,7 +77,7 @@ export const Note: FC<Props> = ({ originalNote }) => {
 						}}
 						alt={originalNote.user.username}
 					/>
-				</a>
+				</Link>
 				<FaRetweet />
 				<span
 					style={{
@@ -85,7 +87,7 @@ export const Note: FC<Props> = ({ originalNote }) => {
 						whiteSpace: "nowrap",
 					}}
 				>
-					<a
+					<Link
 						href={
 							`/@${originalNote.user.username}` + (
 								originalNote.user.instance ? `@/${originalNote.user.instance
@@ -102,18 +104,23 @@ export const Note: FC<Props> = ({ originalNote }) => {
 								textOverflow: "ellipsis",
 							}}
 						>
+              <Link href={`/user/${originalNote.user.username}${originalNote.user.host && `@${originalNote.user.host}`}`}>
 							<UserName user={originalNote.user} />
+              </Link>
 						</span>
-					</a>
+					</Link>
 					がRenote
 				</span>
-        <div style={{marginLeft: 'auto', fontSize: '0.9em'}}>
-        <Time originalTime={originalNote.createdAt} style={{flexShrink: 0, color: 'inherit'}} />
-        </div>
+				<div style={{ marginLeft: "auto", fontSize: "0.9em" }}>
+					<Time
+						originalTime={originalNote.createdAt}
+						style={{ flexShrink: 0, color: "inherit" }}
+					/>
+				</div>
 			</div>
 		)}
 		<article style={{ display: "flex", padding: "28px 32px 18px" }}>
-			<a
+			<Link
 				style={{
 					flexShrink: 0,
 					display: "block",
@@ -129,17 +136,17 @@ export const Note: FC<Props> = ({ originalNote }) => {
 				<Avatar
 					user={originalNote.user}
 					style={{
-            flexShrink: 0,
-            display: "block",
-            margin: "0 14px 8px 0",
-            width: "58px",
-            height: "58px",
-            position: "sticky",
-            top: 0,
-            left: 0,
+						flexShrink: 0,
+						display: "block",
+						margin: "0 14px 8px 0",
+						width: "58px",
+						height: "58px",
+						position: "sticky",
+						top: 0,
+						left: 0,
 					}}
 				/>
-			</a>
+			</Link>
 			<div className="main" style={{ flex: 1, minWidth: 0 }}>
 				<NoteHeader note={note} />
 				<InstanceSticker note={note} />
@@ -160,13 +167,13 @@ export const Note: FC<Props> = ({ originalNote }) => {
 					</div>
 				</div>
 				<footer>
-					<FooterButton><FaReply /></FooterButton>
-					<FooterButton><FaRetweet /></FooterButton>
-					<FooterButton><FaPlus /></FooterButton>
-					<FooterButton><FaEllipsisH /></FooterButton>
+					<FooterButton aria-label="返信"><FaReply /></FooterButton>
+					<FooterButton aria-label="リノート"><FaRetweet /></FooterButton>
+					<FooterButton aria-label="リアクション"><FaPlus /></FooterButton>
+					<FooterButton aria-label="その他"><FaEllipsisH /></FooterButton>
 				</footer>
 			</div>
 		</article>
-		</>
+		</Panel>
 	);
 };
