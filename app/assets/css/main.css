@@ -1,4 +1,9 @@
-html, body {
-    padding: 0px;
-    margin: 0px;
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  font-family: BIZ UDGothic, Roboto, HelveticaNeue, Arial, sans-serif;
 }
