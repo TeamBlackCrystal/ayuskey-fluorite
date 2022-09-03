@@ -1,12 +1,6 @@
-import { DefaultLayout } from "~/components/defaultLayout"
-import { Timeline } from "~/components/timeline"
-
+import { DefaultLayout } from "~/components/defaultLayout";
+import { Timeline } from "~/components/timeline";
 
 export const Home = () => {
-return (
-  <DefaultLayout>
-    <Timeline />
-    </DefaultLayout>
-
-)
-}
+	return <DefaultLayout><Timeline /></DefaultLayout>;
+};
