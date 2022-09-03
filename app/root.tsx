@@ -1,9 +1,6 @@
 import Banner from "@atlaskit/banner";
-import type {
-	LinksFunction,
-	LoaderFunction,
-	MetaFunction,
-} from "@remix-run/node";
+import type { LinksFunction, LoaderArgs, MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import {
 	Links,
 	LiveReload,
@@ -15,12 +12,15 @@ import {
 } from "@remix-run/react";
 import type { Stream } from "ayuskey.js";
 import { createContext, Suspense } from "react";
-import { ClientOnly, json } from "remix-utils";
+import { ClientOnly } from "remix-utils";
 import mainStyle from "./assets/css/main.css";
 import { Loading } from "./components/Loading";
 import { useStreaming } from "./hooks/useStream.client";
-import ErrorIcon from '@atlaskit/icon/glyph/error';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import ErrorIcon from "@atlaskit/icon/glyph/error";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { useChangeLanguage } from "remix-i18next";
+import { useTranslation } from "react-i18next";
+import i18next from "./i18next.server";
 
 export const meta: MetaFunction = () => ({
 	charset: "utf-8",
@@ -29,34 +29,52 @@ export const meta: MetaFunction = () => ({
 });
 
 export const links: LinksFunction = () => {
-	return [{ rel: "stylesheet", href: mainStyle }];
+	return [
+		{ rel: "stylesheet", href: mainStyle },
+	];
 };
 
-
-export const loader: LoaderFunction = () => {
-  return json({ INSTANCE_URL: process.env.INSTANCE_URL, PRODUCTION: process.env.NODE_ENV });
-};
+export async function loader({ request }: LoaderArgs) {
+	let locale = await i18next.getLocale(request);
+	return json({
+		INSTANCE_URL: process.env.INSTANCE_URL,
+		PRODUCTION: process.env.NODE_ENV,
+		locale,
+	});
+}
 export const streamingContext = createContext<Stream | null>(null);
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const AppInit = () => {
 	const stream = useStreaming();
 	return (
-    <QueryClientProvider client={queryClient}>
-		<streamingContext.Provider value={stream}>
-			<Suspense fallback={<Loading />}><Outlet /></Suspense>
-		</streamingContext.Provider>
-    </QueryClientProvider>
+		<QueryClientProvider client={queryClient}>
+			<streamingContext.Provider value={stream}>
+				<Suspense fallback={<Loading />}><Outlet /></Suspense>
+			</streamingContext.Provider>
+		</QueryClientProvider>
 	);
 };
 
 export default function App() {
-	const data = useLoaderData();
+	let data = useLoaderData<typeof loader>();
+
+	let { i18n } = useTranslation();
+	useChangeLanguage(data.locale);
+
 	return (
-		<html lang="en">
+		<html lang={data.locale} dir={i18n.dir()}>
 			<head><Meta /><Links /></head>
 			<body>
-                {data.PRODUCTION  !== 'PRODUCTION' && <Banner appearance="error" isOpen={true} icon={<ErrorIcon label="" secondaryColor="inherit" />}>このビルドは開発モードです</Banner>}
+				{data.PRODUCTION !== "production" && (
+					<Banner
+						appearance="error"
+						isOpen={true}
+						icon={<ErrorIcon label="" secondaryColor="inherit" />}
+					>
+						このビルドは開発モードです
+					</Banner>
+				)}
 				<ClientOnly>{() => <AppInit />}</ClientOnly>
 				<ScrollRestoration />
 				<Scripts />
