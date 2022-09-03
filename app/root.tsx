@@ -20,6 +20,7 @@ import mainStyle from "./assets/css/main.css";
 import { Loading } from "./components/Loading";
 import { useStreaming } from "./hooks/useStream.client";
 import ErrorIcon from '@atlaskit/icon/glyph/error';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export const meta: MetaFunction = () => ({
 	charset: "utf-8",
@@ -31,18 +32,21 @@ export const links: LinksFunction = () => {
 	return [{ rel: "stylesheet", href: mainStyle }];
 };
 
-export const streamingContext = createContext<Stream | null>(null);
 
 export const loader: LoaderFunction = () => {
-	return json({ INSTANCE_URL: process.env.INSTANCE_URL, PRODUCTION: process.env.NODE_ENV });
+  return json({ INSTANCE_URL: process.env.INSTANCE_URL, PRODUCTION: process.env.NODE_ENV });
 };
+export const streamingContext = createContext<Stream | null>(null);
+const queryClient = new QueryClient()
 
 const AppInit = () => {
 	const stream = useStreaming();
 	return (
+    <QueryClientProvider client={queryClient}>
 		<streamingContext.Provider value={stream}>
 			<Suspense fallback={<Loading />}><Outlet /></Suspense>
 		</streamingContext.Provider>
+    </QueryClientProvider>
 	);
 };
 

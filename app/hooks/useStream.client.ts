@@ -54,6 +54,7 @@ export const useStreaming = () => {
 		if (!stream) return;
 		useStream.stream = stream;
 		const homeTimeLine = stream.useChannel(currentTimeline);
+    console.log('切り替えた', currentTimeline)
 		homeTimeLine.on("note", (note: Note) => {
 			useNote.addNote(note);
 		});

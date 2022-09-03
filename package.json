@@ -18,7 +18,7 @@
     "@remix-run/react": "^1.7.0",
     "@remix-run/serve": "^1.7.0",
     "@stitches/react": "^1.2.8",
-    "ayuskey.js": "1.0.0-rc.7",
+    "ayuskey.js": "1.0.0-rc.8",
     "crypto-js": "^4.1.1",
     "dexie": "^3.2.2",
     "framer-motion": "^7.2.1",

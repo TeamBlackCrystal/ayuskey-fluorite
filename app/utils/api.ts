@@ -1,4 +1,3 @@
-import { apiClient } from "strictcat";
-import type { Schema } from "~/models/api";
+import { api as MisskeyAPI } from "ayuskey.js";
 
-export const api = apiClient<Schema>(process.env.INSTANCE_URL || '')
+export const serverSideAPI = new MisskeyAPI.APIClient({origin: process.env.INSTANCE_URL || ''})
