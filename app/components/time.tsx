@@ -17,7 +17,6 @@ export const Time: FC<Props> = memo(({ originalTime, style }) => {
 	const relative = () => {
 		const __time = _time();
 		const ago = (new Date().getTime() - __time.getTime()) / 1000;
-		// console.log(__time, ago)
 
 		const newTime =
 			ago >= 31536000
