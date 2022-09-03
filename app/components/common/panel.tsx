@@ -1,8 +1,7 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import { styled, theme } from "~/stitches.config";
 
-export const Panel = styled.div`
-background: ${theme.props.panel};
-border-radius: ${theme.props.radius};
-overflow: clip;
-`
+export const Panel = styled('div', {
+  background: theme.colors.panel,
+  borderRadius: theme.colors.radius,
+  overflow: 'clip'
+})
