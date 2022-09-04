@@ -2,12 +2,12 @@ import { CustomEmojiLite } from "ayuskey.js/built/entities";
 import * as mfm from "mfm-js";
 import { CSSProperties, FC, useMemo } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { HashTag } from "../components/atoms/hashtag";
-import { Link } from "../components/atoms/link";
 import { Emoji } from "../components/common/emoji";
 import { Code } from "../components/code";
 import { useSnapshot } from "valtio";
 import { useCommon } from "../state/common";
+import { Link } from "../components/common/link";
+import { HashTag } from "../components/common/hashtag";
 interface TreeProps {
 	tree: mfm.MfmNode;
 	plain?: boolean;
@@ -18,7 +18,7 @@ const Tree: FC<TreeProps> = ({ tree, emojis, plain }) => {
   const {host} = useSnapshot(useCommon)
 	switch (tree.type) {
 		case "url": {
-			return <Link href={tree.props.url} target="_blank">
+			return <Link href={tree.props.url} target="_blank" type="link">
         {tree.props.url}
         <FaExternalLinkAlt style={{fontSize: ".9em", paddingLeft: "2px"}}/>
       </Link>;

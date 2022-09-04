@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import { styled, theme } from "../../stitches.config";
 
-export const HashTag = styled.a`
-color: ${theme.props.hashtag};
-`
+export const HashTag = styled('a', {
+  color: theme.colors.hashtag
+})

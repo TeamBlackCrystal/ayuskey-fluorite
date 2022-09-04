@@ -1,12 +1,11 @@
 import { useKeyPress } from "../hooks/useKeyPress";
 import { Timeline } from "../components/timeline";
-import { useCreateNoteModal } from "../store/common";
 import { DefaultLayout } from "../components/defaultLayout";
 
 const Home = () => {
 	const onKeyPress = (event: any) => {
 		if (event.key === "n" || "p") {
-			useCreateNoteModal.isOpen = true;
+			// useCreateNoteModal.isOpen = true;
 		}
 	};
 
