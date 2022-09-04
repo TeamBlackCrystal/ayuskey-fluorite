@@ -1,53 +1,24 @@
-# Welcome to Remix!
+# ayuskey-fluorite
 
-- [Remix Docs](https://remix.run/docs)
+ayuskeyの新しいフロントエンドです
 
-## Development
+## 使い方
 
-From your terminal:
+```bash
+yarn
 
-```sh
-npm run dev
+yarn start
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+## このプロジェクトに貢献する
 
-## Deployment
+pull request等を作成する前に必ず[このページ](https://github.com/TeamBlackCrystal/ayuskey-fluorite/wiki/%E3%81%93%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)を閲覧してください
 
-First, build your app for production:
+## Special Thanks
 
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+- [misskey](https://github.com/misskey-dev/misskey)
+  cssや仕組みなどを一部参考にさせていただきました
+- [ayuskey](https://github.com/TeamBlackCrystal/ayuskey)
+  cssなどを一部拝借しています
+- [Groundpolis/new-frontend](https://github.com/Groundpolis/new-frontend)
+  Reactでmisskey.jsを使う方法などを参考にさせていただきました

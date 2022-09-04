@@ -1,0 +1,27 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+._button, ._borderButton, ._textButton, ._buttonPrimary, ._buttonGradate {
+  appearance: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1em;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
